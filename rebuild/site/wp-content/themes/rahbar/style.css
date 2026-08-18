@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -12,14 +12,41 @@ Text Domain: rahbar
 
 :root {
 	color-scheme: light;
+	--rahbar-radius-sm: 10px;
+	--rahbar-radius-md: 16px;
+	--rahbar-radius-lg: 20px;
+	--rahbar-shadow-sm: 0 8px 24px rgb(54 30 80 / 8%);
+	--rahbar-shadow-md: 0 16px 42px rgb(54 30 80 / 12%);
 }
 
 html {
 	scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body {
+	min-width: 320px;
+	overflow-x: clip;
 	text-rendering: optimizeLegibility;
+}
+
+.wp-site-blocks > *,
+.rahbar-site-brand,
+.rahbar-header-main,
+.rahbar-header-nav-row {
+	min-width: 0;
+}
+
+img,
+svg,
+video {
+	max-width: 100%;
+	height: auto;
 }
 
 a,
@@ -37,12 +64,163 @@ select {
 
 .wp-site-blocks {
 	min-height: 100vh;
+	overflow-wrap: anywhere;
 }
 
 .rahbar-card {
 	border: 1px solid var(--wp--preset--color--border);
-	border-radius: 16px;
-	box-shadow: 0 12px 35px rgb(54 30 80 / 8%);
+	border-radius: var(--rahbar-radius-md);
+	box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-topbar a {
+	color: inherit;
+}
+
+.rahbar-header-main,
+.rahbar-header-nav-row {
+	gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.rahbar-site-brand {
+	flex-shrink: 0;
+}
+
+.rahbar-site-brand .wp-block-site-logo img {
+	max-height: 72px;
+	width: auto;
+}
+
+.rahbar-header-search {
+	flex: 1 1 22rem;
+	max-width: 38rem;
+}
+
+.rahbar-header-search .wp-block-search__inside-wrapper {
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 999px;
+	box-shadow: var(--rahbar-shadow-sm);
+	overflow: hidden;
+}
+
+.rahbar-header-search .wp-block-search__input {
+	min-width: 0;
+	border: 0;
+}
+
+.rahbar-header-search .wp-block-search__button {
+	border-radius: 999px;
+}
+
+.rahbar-header-contact,
+.rahbar-header-actions {
+	flex: 0 0 auto;
+}
+
+.rahbar-header-nav-row .wp-block-navigation {
+	flex: 1 1 auto;
+}
+
+.rahbar-header-actions {
+	gap: 0.5rem;
+}
+
+.rahbar-header-actions .wp-block-button__link {
+	white-space: nowrap;
+}
+
+.rahbar-header-actions .is-style-outline .wp-block-button__link {
+	background: transparent;
+	color: var(--wp--preset--color--primary);
+}
+
+.rahbar-mobile-search {
+	display: none !important;
+}
+
+.rahbar-footer a {
+	color: var(--wp--preset--color--surface);
+}
+
+.rahbar-footer .wp-block-navigation-item__content {
+	padding-block: 0.2rem;
+}
+
+.rahbar-footer-meta {
+	border-top: 1px solid rgb(255 255 255 / 18%);
+}
+
+@media (max-width: 960px) {
+	.rahbar-header-contact {
+		display: none;
+	}
+}
+
+@media (max-width: 781px) {
+	.rahbar-topbar .wp-block-group,
+	.rahbar-header-main,
+	.rahbar-header-nav-row {
+		flex-wrap: nowrap;
+	}
+
+	.rahbar-header-main {
+		justify-content: space-between;
+	}
+
+	.rahbar-header-search,
+	.rahbar-desktop-only {
+		display: none !important;
+	}
+
+	.rahbar-mobile-search {
+		display: block !important;
+		flex: 1 1 100%;
+		max-width: none;
+	}
+
+	.rahbar-header-nav-row {
+		flex-wrap: wrap;
+	}
+
+	.rahbar-header-nav-row .wp-block-navigation {
+		flex: 0 0 auto;
+	}
+
+	.rahbar-header-actions {
+		max-width: 100%;
+		margin-inline-start: auto;
+	}
+
+	.rahbar-header-actions .wp-block-button__link {
+		padding: 0.65rem 0.8rem;
+		font-size: 0.875rem;
+	}
+
+	.rahbar-footer-columns {
+		gap: 2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.rahbar-topbar {
+		font-size: 0.8125rem;
+	}
+
+	.rahbar-topbar .wp-block-button__link {
+		padding: 0.5rem 0.75rem;
+	}
+
+	.rahbar-site-brand .wp-block-site-logo img {
+		max-height: 56px;
+	}
+
+	.rahbar-site-brand .wp-block-site-title {
+		font-size: clamp(1rem, 5vw, 1.25rem);
+	}
+
+	.rahbar-header-actions .wp-block-button:first-child {
+		display: none;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

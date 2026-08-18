@@ -84,7 +84,8 @@
 - [ ] 5.8 `RB-MAIL-001` ارسال ایمیل آزمایشی، From/Reply-To، HTML و ثبت failure را تست کن
 - [ ] 5.9 `RB-CACHE-001` purge cache پس از تغییر محتوا و عدم نمایش محتوای stale را تست کن
 - [ ] 5.10 `RB-ERR-001` نبود warning/notice/fatal در مسیرهای اصلی و logها را تأیید کن
-- [ ] 5.11 `GATE-FOUNDATION` مدیریت پایه Rebuild برای توسعه قابلیت‌ها پایدار باشد
+- [x] 5.11 `RB-THEME-002` design tokenها و Header/Footer واکنش‌گرای قالب Rahbar را تثبیت کن — Evidence: theme `rahbar` v0.2.0، سه screenshot در 1440/768/375، HTTP 200 و گزارش `docs/baseline/rebuild-header-footer-smoke-test.md`، 2026-08-18
+- [ ] 5.12 `GATE-FOUNDATION` مدیریت پایه Rebuild برای توسعه قابلیت‌ها پایدار باشد
 
 ## 6. UI، محتوا و دسترس‌پذیری
 

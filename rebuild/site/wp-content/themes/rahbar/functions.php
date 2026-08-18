@@ -25,6 +25,18 @@ add_action(
 );
 
 add_action(
+	'wp_enqueue_scripts',
+	static function (): void {
+		wp_enqueue_style(
+			'rahbar-style',
+			get_stylesheet_uri(),
+			array(),
+			(string) wp_get_theme()->get( 'Version' )
+		);
+	}
+);
+
+add_action(
 	'init',
 	static function (): void {
 		register_block_pattern_category(

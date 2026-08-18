@@ -12,8 +12,11 @@
       "palette": [
         { "slug": "primary", "name": "بنفش رهبر", "color": "#5f2284" },
         { "slug": "primary-dark", "name": "بنفش تیره", "color": "#361e50" },
+        { "slug": "primary-soft", "name": "بنفش روشن", "color": "#e8e2f6" },
         { "slug": "accent", "name": "زرد رهبر", "color": "#fbb911" },
+        { "slug": "accent-soft", "name": "زرد روشن", "color": "#fff4cc" },
         { "slug": "danger", "name": "قرمز", "color": "#d62b27" },
+        { "slug": "success", "name": "موفقیت", "color": "#237a45" },
         { "slug": "text", "name": "متن", "color": "#242126" },
         { "slug": "muted", "name": "متن کم‌رنگ", "color": "#6f6875" },
         { "slug": "surface", "name": "سطح", "color": "#ffffff" },
@@ -34,7 +37,8 @@
         { "slug": "30", "name": "متوسط", "size": "1rem" },
         { "slug": "40", "name": "بزرگ", "size": "1.5rem" },
         { "slug": "50", "name": "خیلی بزرگ", "size": "2.25rem" },
-        { "slug": "60", "name": "بخش", "size": "clamp(3rem, 7vw, 6rem)" }
+        { "slug": "60", "name": "بخش", "size": "clamp(3rem, 7vw, 6rem)" },
+        { "slug": "70", "name": "بخش بزرگ", "size": "clamp(4rem, 9vw, 8rem)" }
       ],
       "units": ["px", "rem", "em", "%", "vw", "vh"]
     },

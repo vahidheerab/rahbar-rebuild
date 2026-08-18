@@ -20,11 +20,11 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 12 مورد تکمیل‌شده از 204 مورد
+- پیشرفت QA: 13 مورد تکمیل‌شده از 205 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
-- قالب فعال: `rahbar` نسخه `0.1.0`
+- قالب فعال: `rahbar` نسخه `0.2.0`
 - Repository مقصد: `git@github.com:vahidheerab/rahbar-rebuild.git`
 - وضعیت Git: branch `main` روی GitHub همگام است؛ bootstrap در `c3dc417` و گزارش پیوسته در `af554cb` ثبت شد
 
@@ -55,7 +55,7 @@
 
 ### پیاده‌سازی Rebuild
 
-- Block Theme اختصاصی `rahbar` نسخه 0.1.0 ساخته شد.
+- Block Theme اختصاصی `rahbar` تا نسخه 0.2.0 توسعه یافت.
 - `theme.json`، design tokenها، header، footer و templateهای اصلی ایجاد شدند.
 - templateهای front page، page، single، archive، search و 404 اضافه شدند.
 - patternهای Hero، Services و CTA اضافه شدند.
@@ -90,21 +90,30 @@
 
 ## آخرین checkpoint امن
 
-Rebuild با قالب `rahbar 0.1.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. هیچ داده واقعی Legacy، افزونه ثالث یا layout Elementor وارد Rebuild نشده است. فایل‌های مجاز برای اولین commit آماده‌اند.
+Rebuild با قالب `rahbar 0.2.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. tokenها و Header/Footer در viewportهای 1440، 768 و 375 تأیید شده‌اند. هیچ داده واقعی Legacy، افزونه ثالث یا layout Elementor وارد Rebuild نشده است.
 
 ## اقدام بعدی اصلی
 
-design tokenهای مشترک Home/Product را تثبیت و header/footer قالب Rahbar را مطابق baseline و بدون defectهای responsive Legacy تکمیل کن.
+Benefits pattern چهارگانه را با layout دو ستونه در tablet و تک‌ستونه در mobile بساز و روی Home prototype تست کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. ساخت Benefits pattern چهارگانه با layout دو ستونه tablet و تک‌ستونه mobile؛
-2. طراحی Product template prototype با CTA قابل دسترس در Mobile؛
-3. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
-4. استخراج active pluginها و مالکیت داده هر plugin؛
-5. اجرای responsive/RTL smoke test روی Home prototype.
+1. طراحی Product template prototype با CTA قابل دسترس در Mobile؛
+2. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
+3. استخراج active pluginها و مالکیت داده هر plugin؛
+4. اجرای responsive/RTL smoke test کامل روی Home prototype.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `rebuild-header-footer-v0.2.0`
+
+- tokenهای رنگ، spacing، radius و shadow مشترک تثبیت شدند.
+- top bar، هویت سایت، جست‌وجوی desktop/mobile، navigation و CTAهای header تکمیل شدند.
+- footer سه‌ستونه با لینک‌های راهبری، حساب و تماس تکمیل شد.
+- مشکل بارگذاری‌نشدن CSS در frontend با enqueue نسخه‌دار stylesheet اصلاح شد.
+- سه smoke test تصویری Playwright در عرض‌های 1440، 768 و 375 اجرا و بازبینی شد؛ clipping و overflow افقی مشاهده نشد.
+- PHP، JSON، HTTP و Docker log بررسی شدند و شواهد در `docs/baseline/rebuild-header-footer-smoke-test.md` ثبت شد.
+- checkpoint: `RB-THEME-002` تکمیل؛ اقدام بعدی ساخت Benefits pattern چهارگانه است.
 
 ### 2026-08-18 — `legacy-product-visual-inventory`
 
