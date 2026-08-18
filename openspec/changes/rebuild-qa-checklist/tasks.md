@@ -40,7 +40,7 @@
 - [ ] 3.3 `INV-UI-001` sitemap صفحات عمومی و template مورد استفاده هرکدام را ثبت کن
 - [ ] 3.4 `INV-UI-002` header، footer، menu، widget، popup و responsive breakpointها را screenshot بگیر
 - [x] 3.5 `INV-PLG-001` فهرست plugin و mu-plugin با وضعیت، نسخه، مالک قابلیت و تصمیم migrate/replace/retire بساز — Evidence: `PLUGIN-INVENTORY.md`، تطبیق read-only با `active_plugins` و جدول‌های Legacy، 2026-08-18
-- [ ] 3.6 `INV-CODE-001` shortcode، block، hook، snippet و کد اختصاصی فعال را فهرست کن
+- [x] 3.6 `INV-CODE-001` shortcode، block، hook، snippet و کد اختصاصی فعال را فهرست کن — Evidence: `docs/baseline/legacy-custom-code-inventory.md`، metadata read-only دیتابیس و static scan، 2026-08-18
 - [ ] 3.7 `INV-DATA-001` post type، taxonomy، status و meta key سفارشی را ثبت کن
 - [ ] 3.8 `INV-DATA-002` همه جدول‌ها، engine، collation، حجم و مالک افزونه را ثبت کن
 - [ ] 3.9 `INV-USER-001` role، capability، تعداد کاربران و مسیرهای registration/login/reset/profile را ثبت کن
@@ -292,7 +292,7 @@ Failed/blocked test IDs: none tested and failed
 Evidence location: `docs/infrastructure/compose-isolation-evidence.md`، `docs/baseline/` و مدارک inline هر test
 Last safe checkpoint: هر دو stack ایزوله و healthy؛ Home و Product prototype در Rebuild فعال هستند
 Open blockers + owner: مجوز فونت و قرارداد price/LMS/SpotPlayer نیازمند تصمیم مالک و audit فنی است
-Exact next action: اجرای `INV-CODE-001` با export امن فهرست snippetهای فعال از `wp_snippets` و inventory کردن shortcode/hookهای کد اختصاصی، بدون اجرای کد دیتابیس
+Exact next action: اجرای `INV-DATA-001` با شمارش read-only post type، taxonomy، status و meta keyهای سفارشی Legacy
 Notes/decisions: tasks.md مرجع canonical وضعیت روزانه است؛ secrets و dump وارد Git نشوند
 ```
 

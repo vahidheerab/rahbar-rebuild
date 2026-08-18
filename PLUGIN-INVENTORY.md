@@ -21,6 +21,13 @@
 | stackهای دارای هم‌پوشانی | cache/performance، payment، editor/page-builder |
 | وضعیت active/inactive | 22 افزونه فعال و موجود، 4 افزونه غیرفعال و موجود، 1 ورودی فعال ولی مفقود (`wp-crontrol`) |
 
+## تصمیم‌های قطعی مالک پروژه
+
+- Legacy فقط برای الگو و تست است؛ هیچ پاک‌سازی یا توسعه‌ای روی آن انجام نمی‌شود.
+- `wp-crontrol`، Kadence Security، TeraWallet و Rahbar CRM Connector به Rebuild منتقل نمی‌شوند.
+- حذف فیزیکی موارد بالا از Legacy در scope نیست؛ فقط در مقصد نصب/مهاجرت نمی‌شوند و داده حساس لازم پیش از cutover برای reconciliation بررسی می‌شود.
+- هنگام رسیدن به فاز نصب و جایگزینی افزونه‌ها، هر افزونه جداگانه با مالک پروژه بررسی و پس از تأیید او تعیین تکلیف می‌شود.
+
 ## وضعیت واقعی فعال‌بودن در Legacy
 
 منبع حقیقت این بخش `wp_options.active_plugins` است. option مربوط به network activation وجود نداشت؛ این نصب multisite فعال ندارد.
@@ -54,7 +61,7 @@
 | Plugin | نسخه محلی | تصمیم Rebuild | اولویت | دلیل و اقدام لازم |
 |---|---:|---|---|---|
 | Antispam Bee | 2.11.12 | Keep فقط اگر comment فعال است؛ وگرنه Retire | کم | نسخه محلی فعلاً جاری است؛ نیاز واقعی comment و تنظیمات privacy تست شود. |
-| Kadence Security Basic (`better-wp-security`) | 10.0.2 | Update/Audit | بالا | به 10.0.3 یا نسخه pinned مصوب ارتقا؛ ruleهای rewrite، 2FA، brute-force و تداخل با proxy/host security تست شود. |
+| Kadence Security Basic (`better-wp-security`) | 10.0.2 | Do not migrate | قطعی | طبق تصمیم مالک پروژه به Rebuild منتقل نمی‌شود؛ امنیت مقصد مستقل طراحی و تست می‌شود. |
 | Change Mail Sender | 1.3.0 | Replace | متوسط | From/Reply-To در integration ایمیل/SMTP version-controlled تنظیم شود؛ plugin تک‌کاربردی منتقل نشود. |
 | Classic Editor | 1.7.0 | Retire | متوسط | تصمیم ADR-0001 استفاده از Block Editor است؛ فقط تا پایان تبدیل محتوای ناسازگار در Legacy بماند. |
 | Code Snippets | 3.9.6 | Replace | بحرانی | همه snippetهای فعال export و code-review شوند، سپس هر قابلیت به plugin اختصاصی/version-controlled منتقل شود؛ اجرای کد از DB در Rebuild ممنوع. |
@@ -66,7 +73,7 @@
 | LoginX (`loginx1`) | 1.5.0 | Audit first/Replace | بحرانی | registration/login/OTP به plugin احراز هویت پشتیبانی‌شده و تست‌پذیر منتقل شود؛ coexistence دو نسخه ممنوع. |
 | Perfmatters | 2.6.4 | Audit first | بالا | overlap با LiteSpeed و MU performance؛ فقط در صورت benchmark و license معتبر، یک مالک optimization باقی بماند. |
 | Query Monitor | 4.0.7 | Dev only | کم | برای profiling مفید است؛ در production دائمی فعال نباشد و دسترسی debug عمومی نشود. |
-| Rahbar CRM Connector | 1.0.1 | Audit first/Rebuild | بحرانی | API، auth، retry، idempotency، PII و mapping داده مستند و در integration مستقل بازسازی شود. |
+| Rahbar CRM Connector | 1.0.1 | Do not migrate | قطعی | CRM دیگر موردنیاز نیست؛ cron و اتصال بیرونی آن در Rebuild ایجاد نمی‌شود. Legacy دست‌نخورده می‌ماند. |
 | Rahbar IPG Gateway | 1.1.0 | Audit first/Consolidate | بحرانی | با درگاه Zibal و Payment Bridge هم‌پوشانی بررسی؛ یک مالک واحد برای payment/callback انتخاب شود. |
 | Rank Math SEO | 1.0.272 | Update | بالا | نسخه عمومی 1.0.276 است؛ ابتدا backup metadata و staging upgrade، سپس sitemap/schema/canonical regression. |
 | Rank Math SEO Pro | 3.0.115 | Update as matched pair | بالا | license و سازگاری دقیق با نسخه Core مصوب تأیید؛ free/pro جداگانه و بدون staging آپدیت نشوند. |
@@ -77,7 +84,7 @@
 | Checkout Field Editor Pro | 2.1.9 | Audit first/Replace | بالا | fieldها، validation، order meta و email display inventory؛ ترجیح با Checkout Blocks/API یا plugin سازگار و حداقلی است. |
 | WooCommerce | 10.8.1 | Keep/Update | بحرانی | نسخه عمومی 11.0.1 است؛ ارتقای major فقط پس از audit gateway/LMS/checkout/HPOS و اجرای regression کامل. |
 | Advanced Order Export for WooCommerce | 4.1.0 | Keep if used | متوسط | نسخه محلی جاری و شامل fixهای SQLi/XSS است؛ preset/exportهای مالی inventory، و در صورت بی‌استفاده بودن retire شود. |
-| TeraWallet | 1.6.4 | Update if wallet is required؛ otherwise Retire with migration | بحرانی | نسخه عمومی 1.6.12 است؛ balance/transaction liability ابتدا reconcile و سپس تصمیم کسب‌وکار گرفته شود. |
+| TeraWallet | 1.6.4 | Do not migrate | قطعی | طبق تصمیم مالک پروژه قابلیت کیف پول به Rebuild منتقل نمی‌شود؛ مانده و ledger قدیمی فقط برای reconciliation و سوابق مالی حفظ می‌شوند. |
 | WP-Parsidate | 6.0 | Update | متوسط | نسخه عمومی 6.2.1 است؛ تاریخ سفارش، sale schedule، timezone، sitemap و نمایش قیمت WooCommerce regression شود. |
 
 ## MU-pluginها و drop-in

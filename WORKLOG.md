@@ -20,7 +20,7 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 18 مورد تکمیل‌شده از 208 مورد
+- پیشرفت QA: 19 مورد تکمیل‌شده از 208 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
@@ -207,3 +207,12 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - همه جدول‌های Legacy فهرست و مالکیت داده‌های WooCommerce، Elementor، Code Snippets، Login/OTP، SMS، payment، wallet، SEO، security، cache و media در `PLUGIN-INVENTORY.md` ثبت شد.
 - جدول‌های محتمل orphan/dependency حذف‌شده Tutor، Quiz Maker، ticket، YITH و Slider به‌عنوان finding باز ثبت شدند و هیچ داده یا افزونه‌ای حذف نشد.
 - checkpoint: `INV-PLG-001` تکمیل؛ اقدام بعدی اجرای `INV-CODE-001` با export امن metadata مربوط به snippetهای فعال و inventory کد اختصاصی است.
+
+### 2026-08-18 — `legacy-scope-decisions-and-custom-code-inventory`
+
+- تصمیم مالک پروژه ثبت شد: Legacy فقط مرجع الگو/تست است و هیچ توسعه یا پاک‌سازی روی آن انجام نمی‌شود.
+- `wp-crontrol`، Kadence Security، TeraWallet و Rahbar CRM Connector در فهرست قطعی «عدم انتقال به Rebuild» قرار گرفتند؛ CRM در مقصد بازسازی نمی‌شود.
+- قاعده فاز افزونه‌ها ثبت شد: افزونه‌ها باید یکی‌یکی با مالک پروژه بررسی و سپس migrate/replace/retire شوند.
+- metadata ده Code Snippet بدون خواندن/اجرای متن کد بررسی شد؛ دو shortcode فعال و هشت snippet غیرفعال شناسایی شدند.
+- کد دامنه‌ای پراکنده در Hello Elementor، MU-pluginها، SpotPlayer، SMS و payment با static scan در `docs/baseline/legacy-custom-code-inventory.md` ثبت شد.
+- checkpoint: `INV-CODE-001` تکمیل؛ اقدام بعدی `INV-DATA-001` و شمارش entity و metaهای سفارشی Legacy به‌صورت read-only است.
