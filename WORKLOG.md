@@ -20,11 +20,11 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 14 مورد تکمیل‌شده از 206 مورد
+- پیشرفت QA: 15 مورد تکمیل‌شده از 207 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
-- قالب فعال: `rahbar` نسخه `0.3.0`
+- قالب فعال: `rahbar` نسخه `0.4.0`
 - Repository مقصد: `git@github.com:vahidheerab/rahbar-rebuild.git`
 - وضعیت Git: branch `main` روی GitHub همگام است؛ bootstrap در `c3dc417` و گزارش پیوسته در `af554cb` ثبت شد
 
@@ -55,7 +55,7 @@
 
 ### پیاده‌سازی Rebuild
 
-- Block Theme اختصاصی `rahbar` تا نسخه 0.3.0 توسعه یافت.
+- Block Theme اختصاصی `rahbar` تا نسخه 0.4.0 توسعه یافت.
 - `theme.json`، design tokenها، header، footer و templateهای اصلی ایجاد شدند.
 - templateهای front page، page، single، archive، search و 404 اضافه شدند.
 - patternهای Hero، Benefits، Services و CTA اضافه شدند.
@@ -90,20 +90,29 @@
 
 ## آخرین checkpoint امن
 
-Rebuild با قالب `rahbar 0.3.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. Header/Footer و Benefits در viewportهای 1440، 768 و 375 تأیید شده‌اند. هیچ داده واقعی Legacy، افزونه ثالث یا layout Elementor وارد Rebuild نشده است.
+Rebuild با قالب `rahbar 0.4.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. بخش visible هدر، Hero و Benefits با assetها و screenshotهای Legacy در viewportهای 1440، 768 و 375 تطبیق یافته است. هیچ افزونه یا layout metadata مربوط به Elementor وارد Rebuild نشده است.
 
 ## اقدام بعدی اصلی
 
-یک visual-parity pass روی Home اجرا کن و Header، Hero، Benefits و Footer موجود را تا بیشترین شباهت به screenshotهای Legacy اصلاح کن؛ فقط اختلاف‌های لازم برای رفع نقص فنی را نگه دار.
+Product template prototype را با بیشترین شباهت به baseline محصول نمونه بساز و CTA خرید را در Mobile پیش از محتوای طولانی قابل دسترس نگه دار.
 
 ## صف کار پس از اقدام اصلی
 
-1. ساخت Product template با بیشترین شباهت به baseline و CTA قابل دسترس در Mobile؛
-2. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
-3. استخراج active pluginها و مالکیت داده هر plugin؛
-4. اجرای responsive/RTL smoke test کامل روی Home.
+1. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
+2. استخراج active pluginها و مالکیت داده هر plugin؛
+3. اجرای responsive/RTL و interaction test کامل روی Home؛
+4. تهیه baseline جداگانه برای Footer و سکشن‌های پایین‌تر Home.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `home-legacy-visual-parity-v0.4.0`
+
+- assetهای واقعی logo، Hero chess، wave و education icon از Legacy استخراج و داخل theme مستقل شدند.
+- Header، navigation، Hero و Benefits براساس screenshotهای Legacy بازطراحی معکوس شدند؛ layout Elementor منتقل نشد.
+- Hero در desktop/tablet دوستونه و در mobile متن-سپس-تصویر شد؛ navigation تبلت به hamburger تبدیل شد.
+- ایراد heading hierarchy بخش Benefits با افزودن H2 قابل دسترس اصلاح شد و CTA ثبت‌نام در عرض کم nowrap شد.
+- screenshotهای 1440، 768 و 375 با مرجع Legacy مقایسه شدند؛ اختلاف‌های عمدی در `docs/baseline/rebuild-home-visual-parity-report.md` ثبت شدند.
+- قالب به `0.4.0` رسید؛ checkpoint بعدی Product template با visual parity است.
 
 ### 2026-08-18 — `visual-parity-direction`
 
