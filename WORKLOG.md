@@ -20,7 +20,7 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 16 مورد تکمیل‌شده از 208 مورد
+- پیشرفت QA: 17 مورد تکمیل‌شده از 208 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
@@ -38,6 +38,7 @@
 - WordPress Rebuild روی پورت 8082 و Legacy روی پورت 8081 تنظیم شد.
 - phpMyAdmin مستقل برای Legacy روی 8083 و Rebuild روی 8084 اضافه شد.
 - اعتبار Compose هر دو محیط و healthy بودن دیتابیس‌ها بررسی شد.
+- ایزولیشن project/container/network/volume/port/mount دو محیط با تست منفی cross-network اثبات شد.
 
 ### برنامه‌ریزی و کنترل کیفیت
 
@@ -96,16 +97,27 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 
 ## اقدام بعدی اصلی
 
-`INF-ISO-001` را اجرا کن و نام project، container، network، volume، port و مسیر mount هر دو محیط Legacy/Rebuild را به‌عنوان evidence ایزولیشن ثبت کن.
+فهرست active/inactive افزونه‌های Legacy را مستقیماً از `active_plugins` و `active_sitewide_plugins` استخراج و با `PLUGIN-INVENTORY.md` تطبیق بده؛ مالکیت داده هر افزونه را ثبت کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. استخراج active pluginها و مالکیت داده هر plugin؛
-2. اجرای responsive/RTL و interaction test کامل روی Home؛
-3. تهیه baseline جداگانه برای Footer و سکشن‌های پایین‌تر Home؛
-4. تعیین قرارداد canonical ریال/تومان و منبع metadata دوره.
+1. اجرای responsive/RTL و interaction test کامل روی Home؛
+2. تهیه baseline جداگانه برای Footer و سکشن‌های پایین‌تر Home؛
+3. تعیین قرارداد canonical ریال/تومان و منبع metadata دوره؛
+4. اجرای restart isolation برای Rebuild و سپس Legacy (`INF-ISO-002/003`).
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `compose-isolation-inf-iso-001`
+
+- projectهای `rahbar-legacy` و `rahbar-rebuild` و هر شش container runtime بررسی شدند.
+- networkها و volumeهای دیتابیس مستقل و bind mountهای WordPress از sourceهای جدا تأیید شدند.
+- پورت‌های 8081/8082 برای WordPress و 8083/8084 برای phpMyAdmin بدون اشتراک ثبت شدند.
+- DNS منفی cross-network از هر WordPress به DB محیط مقابل اجرا و در هر دو جهت عمداً شکست خورد.
+- DBهای هر دو محیط healthy، endpointهای مدیریتی HTTP 200 و containerها running بودند.
+- timeout Home قدیمی به‌عنوان finding عملکرد Legacy ثبت شد، نه failure ایزولیشن.
+- Evidence در `docs/infrastructure/compose-isolation-evidence.md` ثبت شد.
+- checkpoint: `INF-ISO-001` تکمیل؛ اقدام بعدی استخراج active pluginها و مالکیت داده است.
 
 ### 2026-08-18 — `woocommerce-product-prototype-v0.5.0`
 

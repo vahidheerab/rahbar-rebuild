@@ -23,7 +23,7 @@
 - [x] 2.6 `INF-WEB-002` پاسخ WordPress Rebuild روی `http://localhost:8082` را تأیید کن — Evidence: container up، 2026-08-18
 - [x] 2.7 `INF-DBA-001` پاسخ HTTP 200 پنل Legacy روی `http://localhost:8083` را تأیید کن — Evidence: HTTP 200، 2026-08-18
 - [x] 2.8 `INF-DBA-002` پاسخ HTTP 200 پنل Rebuild روی `http://localhost:8084` را تأیید کن — Evidence: HTTP 200، 2026-08-18
-- [ ] 2.9 `INF-ISO-001` نام project، container، network و volume دو Compose را استخراج و عدم اشتراک را ثبت کن
+- [x] 2.9 `INF-ISO-001` نام project، container، network و volume دو Compose را استخراج و عدم اشتراک را ثبت کن — Evidence: `docs/infrastructure/compose-isolation-evidence.md`، cross-network DNS negative test و HTTP/health probes، 2026-08-18
 - [ ] 2.10 `INF-ISO-002` Rebuild را restart کن و ثابت کن Legacy بدون restart و بدون تغییر داده در دسترس می‌ماند
 - [ ] 2.11 `INF-ISO-003` Legacy را restart کن و ثابت کن Rebuild بدون restart و بدون تغییر داده در دسترس می‌ماند
 - [ ] 2.12 `INF-VER-001` نسخه دقیق WordPress، PHP، MySQL و image digest هر دو محیط را ثبت کن
@@ -286,13 +286,13 @@ Run ID: 20260818-rebuild-qa-plan
 Date/Operator: 2026-08-18 / Codex + project owner
 Branch/Commit: unavailable — .git در مسیر جدید وجود ندارد
 Environment: Legacy + Rebuild local Docker
-Current phase/gate: Phase 2 / GATE-BASELINE
-Completed test IDs: INF-CMP-001, INF-CMP-002, INF-DB-001, INF-DB-002, INF-WEB-001, INF-WEB-002, INF-DBA-001, INF-DBA-002
+Current phase/gate: Phase 2 / GATE-BASELINE و توسعه انتخابی UI/WooCommerce
+Completed test IDs: INF-CMP-001, INF-CMP-002, INF-DB-001, INF-DB-002, INF-WEB-001, INF-WEB-002, INF-DBA-001, INF-DBA-002, INF-ISO-001, ARC-ADR-001, RB-THEME-001, RB-THEME-002, UI-HOME-BEN-001, UI-HOME-PAR-001, WC-PROD-PROT-001
 Failed/blocked test IDs: none tested and failed
-Evidence location: Docker compose/ps and HTTP checks in session output; persistent evidence pending
-Last safe checkpoint: هر دو stack و هر دو phpMyAdmin در حال اجرا و دیتابیس‌ها healthy
-Open blockers + owner: جایگاه Git پس از تغییر ساختار باید توسط مالک مخزن تعیین شود؛ Evidence پایدار baseline هنوز ساخته نشده
-Exact next action: اجرای 2.9 (INF-ISO-001) و ثبت نام project/container/network/volume هر دو محیط
+Evidence location: `docs/infrastructure/compose-isolation-evidence.md`، `docs/baseline/` و مدارک inline هر test
+Last safe checkpoint: هر دو stack ایزوله و healthy؛ Home و Product prototype در Rebuild فعال هستند
+Open blockers + owner: مجوز فونت و قرارداد price/LMS/SpotPlayer نیازمند تصمیم مالک و audit فنی است
+Exact next action: استخراج active/inactive pluginهای Legacy و ثبت مالکیت داده در `PLUGIN-INVENTORY.md`
 Notes/decisions: tasks.md مرجع canonical وضعیت روزانه است؛ secrets و dump وارد Git نشوند
 ```
 
