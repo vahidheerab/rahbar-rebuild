@@ -20,7 +20,7 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 11 مورد تکمیل‌شده از 203 مورد
+- پیشرفت QA: 12 مورد تکمیل‌شده از 204 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
@@ -94,17 +94,28 @@ Rebuild با قالب `rahbar 0.1.0` بالا است، دیتابیس healthy ا
 
 ## اقدام بعدی اصلی
 
-visual inventory صفحه Product در Legacy را تکمیل و template، gallery، price، purchase CTA، metadata و responsive behavior را ثبت کن.
+design tokenهای مشترک Home/Product را تثبیت و header/footer قالب Rahbar را مطابق baseline و بدون defectهای responsive Legacy تکمیل کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. تثبیت design tokenها و تکمیل header/footer مطابق baseline Home؛
-2. ساخت Benefits pattern چهارگانه با layout دو ستونه tablet و تک‌ستونه mobile؛
+1. ساخت Benefits pattern چهارگانه با layout دو ستونه tablet و تک‌ستونه mobile؛
+2. طراحی Product template prototype با CTA قابل دسترس در Mobile؛
 3. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
 4. استخراج active pluginها و مالکیت داده هر plugin؛
-5. ساخت prototype قابل مقایسه Home در Rebuild و اجرای responsive/RTL smoke test.
+5. اجرای responsive/RTL smoke test روی Home prototype.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `legacy-product-visual-inventory`
+
+- محصول منتشرشده `39885` با عنوان «دوره آموزش حسابداری طلا» به‌عنوان نمونه پولی انتخاب شد.
+- screenshotهای Product در 1440×1200، 768×1100 و 375×900 ثبت و بازبینی شدند.
+- ساختار عنوان، تصویر، summary، SpotPlayer notice، instructor، tabs، purchase card و curriculum مستند شد.
+- قرارداد read-only محصول ثبت شد: simple، virtual، قیمت عادی 18,000,000، قیمت فروش 11,800,000، instock و قابل خرید.
+- finding بحرانی: Mobile horizontal overflow دارد و عنوان، تصویر و summary clip می‌شوند؛ CTA خرید above-the-fold نیست.
+- mapping به WooCommerce blocks، LMS metadata و entitlement plugin تعریف شد.
+- verification: سه PNG عمومی، metadata WooCommerce و سند baseline بررسی شدند.
+- checkpoint: `INV-UI-004` تکمیل؛ اقدام بعدی تثبیت tokenها و تکمیل header/footer است.
 
 ### 2026-08-18 — `legacy-home-visual-inventory`
 
