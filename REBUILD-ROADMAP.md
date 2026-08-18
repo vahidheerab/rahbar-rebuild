@@ -453,7 +453,7 @@
 | تثبیت محیط‌ها | در حال تکمیل | legacy و rebuild پایدار |
 | Inventory | شروع نشده | ماتریس کامل قابلیت‌ها |
 | طراحی معماری | در حال انجام | ADRها و مدل مقصد؛ ADR قالب ثبت شده |
-| بازسازی UI | در حال انجام | Block Theme Rahbar 0.2.0 فعال؛ tokenها و Header/Footer واکنش‌گرا تکمیل شده‌اند |
+| بازسازی UI | در حال انجام | Block Theme Rahbar 0.3.0 فعال؛ Header/Footer و Benefits واکنش‌گرا تکمیل شده‌اند |
 | بازسازی commerce | شروع نشده | محصول تا پرداخت |
 | بازسازی LMS/SpotPlayer | شروع نشده | course تا entitlement |
 | migration scriptها | شروع نشده | انتقال idempotent |

@@ -103,7 +103,8 @@
 - [ ] 6.12 `A11Y-KBD-001` کل مسیرهای اصلی را فقط با keyboard و focus visible تست کن
 - [ ] 6.13 `A11Y-SR-001` label، landmark، heading، alt و announcement خطا را با screen reader بررسی کن
 - [ ] 6.14 `A11Y-CON-001` contrast، zoom 200% و prefers-reduced-motion را بررسی کن
-- [ ] 6.15 `GATE-UI` همه templateهای must-have و معیارهای accessibility مصوب قبول باشند
+- [x] 6.15 `UI-HOME-BEN-001` Benefits چهارگانه Home را با layout چهار/دو/یک ستونه پیاده‌سازی و smoke test کن — Evidence: theme `rahbar` v0.3.0، سه screenshot full-page و گزارش `docs/baseline/rebuild-home-benefits-smoke-test.md`، 2026-08-18
+- [ ] 6.16 `GATE-UI` همه templateهای must-have و معیارهای accessibility مصوب قبول باشند
 
 ## 7. کاربران، احراز هویت و حریم خصوصی
 

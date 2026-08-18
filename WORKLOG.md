@@ -20,11 +20,11 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 13 مورد تکمیل‌شده از 205 مورد
+- پیشرفت QA: 14 مورد تکمیل‌شده از 206 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
-- قالب فعال: `rahbar` نسخه `0.2.0`
+- قالب فعال: `rahbar` نسخه `0.3.0`
 - Repository مقصد: `git@github.com:vahidheerab/rahbar-rebuild.git`
 - وضعیت Git: branch `main` روی GitHub همگام است؛ bootstrap در `c3dc417` و گزارش پیوسته در `af554cb` ثبت شد
 
@@ -55,10 +55,10 @@
 
 ### پیاده‌سازی Rebuild
 
-- Block Theme اختصاصی `rahbar` تا نسخه 0.2.0 توسعه یافت.
+- Block Theme اختصاصی `rahbar` تا نسخه 0.3.0 توسعه یافت.
 - `theme.json`، design tokenها، header، footer و templateهای اصلی ایجاد شدند.
 - templateهای front page، page، single، archive، search و 404 اضافه شدند.
-- patternهای Hero، Services و CTA اضافه شدند.
+- patternهای Hero، Benefits، Services و CTA اضافه شدند.
 - قالب در Rebuild فعال شد.
 - JSON و PHP معتبر، HTTP صفحه اصلی 200 و log بدون PHP error تأیید شد.
 
@@ -90,20 +90,29 @@
 
 ## آخرین checkpoint امن
 
-Rebuild با قالب `rahbar 0.2.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. tokenها و Header/Footer در viewportهای 1440، 768 و 375 تأیید شده‌اند. هیچ داده واقعی Legacy، افزونه ثالث یا layout Elementor وارد Rebuild نشده است.
+Rebuild با قالب `rahbar 0.3.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. Header/Footer و Benefits در viewportهای 1440، 768 و 375 تأیید شده‌اند. هیچ داده واقعی Legacy، افزونه ثالث یا layout Elementor وارد Rebuild نشده است.
 
 ## اقدام بعدی اصلی
 
-Benefits pattern چهارگانه را با layout دو ستونه در tablet و تک‌ستونه در mobile بساز و روی Home prototype تست کن.
+Product template prototype را بر اساس baseline محصول نمونه بساز و CTA خرید را در Mobile پیش از محتوای طولانی قابل دسترس نگه دار.
 
 ## صف کار پس از اقدام اصلی
 
-1. طراحی Product template prototype با CTA قابل دسترس در Mobile؛
-2. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
-3. استخراج active pluginها و مالکیت داده هر plugin؛
-4. اجرای responsive/RTL smoke test کامل روی Home prototype.
+1. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
+2. استخراج active pluginها و مالکیت داده هر plugin؛
+3. اجرای responsive/RTL smoke test کامل روی Home prototype.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `rebuild-home-benefits-v0.3.0`
+
+- pattern مستقل `rahbar/benefits` با چهار ارزش پیشنهادی baseline Legacy ساخته و پس از Hero به Home متصل شد.
+- CSS Grid با چیدمان چهار ستون desktop، دو ستون tablet و یک ستون mobile اضافه شد.
+- pattern در WordPress parse و render شد و وجود دقیقاً چهار کارت در HTML صفحه تأیید شد.
+- سه screenshot full-page در عرض‌های 1440، 768 و 375 تولید و بازبینی شد؛ clipping یا overflow افقی مشاهده نشد.
+- نسخه قالب به `0.3.0` افزایش یافت و HTTP 200 و بارگذاری stylesheet نسخه جدید تأیید شد.
+- Evidence در `docs/baseline/rebuild-home-benefits-smoke-test.md` ثبت شد.
+- checkpoint: `UI-HOME-BEN-001` تکمیل؛ اقدام بعدی Product template prototype است.
 
 ### 2026-08-18 — `rebuild-header-footer-v0.2.0`
 

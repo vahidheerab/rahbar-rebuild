@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 0.2.0
+Version: 0.3.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -71,6 +71,62 @@ select {
 	border: 1px solid var(--wp--preset--color--border);
 	border-radius: var(--rahbar-radius-md);
 	box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-benefits-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.rahbar-benefit-card {
+	position: relative;
+	min-height: 100%;
+	padding: clamp(1.25rem, 2.5vw, 2rem);
+	padding-top: clamp(4.5rem, 7vw, 5.25rem);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--rahbar-radius-md);
+	background: var(--wp--preset--color--surface);
+	box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-benefit-card:nth-child(even) {
+	background: var(--wp--preset--color--surface-alt);
+}
+
+.rahbar-benefit-card::before {
+	position: absolute;
+	top: 1.25rem;
+	inset-inline-start: 1.25rem;
+	display: grid;
+	width: 2.75rem;
+	min-height: 2.75rem;
+	place-items: center;
+	border-radius: 50%;
+	background: var(--wp--preset--color--accent-soft);
+	color: var(--wp--preset--color--primary-dark);
+	font-size: 1.25rem;
+	font-weight: 800;
+}
+
+.rahbar-benefit-card--courses::before {
+	content: "۲۰+";
+}
+
+.rahbar-benefit-card--certificate::before {
+	content: "✓";
+}
+
+.rahbar-benefit-card--questions::before {
+	content: "؟";
+}
+
+.rahbar-benefit-card--support::before {
+	content: "۲۴";
+}
+
+.rahbar-benefit-card > :last-child {
+	margin-bottom: 0;
 }
 
 .rahbar-topbar a {
@@ -151,6 +207,10 @@ select {
 }
 
 @media (max-width: 960px) {
+	.rahbar-benefits-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.rahbar-header-contact {
 		display: none;
 	}
@@ -202,6 +262,10 @@ select {
 }
 
 @media (max-width: 480px) {
+	.rahbar-benefits-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
 	.rahbar-topbar {
 		font-size: 0.8125rem;
 	}
