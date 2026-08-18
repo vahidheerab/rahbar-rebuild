@@ -26,7 +26,7 @@
 - MySQL Rebuild: healthy
 - قالب فعال: `rahbar` نسخه `0.1.0`
 - Repository مقصد: `git@github.com:vahidheerab/rahbar-rebuild.git`
-- وضعیت Git هنگام ایجاد این checkpoint: فایل‌ها stage شده‌اند؛ commit/push نهایی هنوز باید تکمیل شود
+- وضعیت Git: branch `main` روی GitHub همگام است؛ bootstrap در `c3dc417` و گزارش پیوسته در `af554cb` ثبت شد
 
 ## کارهای انجام‌شده تا اینجا
 
@@ -94,11 +94,11 @@ Rebuild با قالب `rahbar 0.1.0` بالا است، دیتابیس healthy ا
 
 ## اقدام بعدی اصلی
 
-اولین commit را ایجاد و branch `main` را به `origin` push کن؛ سپس hash commit و نتیجه push را در همین فایل ثبت کن.
+visual inventory صفحه Home در Legacy را تکمیل و componentها، spacing، typography، responsive behavior و تفاوت‌های عمدی مقصد را ثبت کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. visual inventory کامل Home و Product در Legacy؛
+1. visual inventory صفحه Product در Legacy؛
 2. تثبیت design tokenها و تکمیل header/footer مطابق baseline؛
 3. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
 4. استخراج active pluginها و مالکیت داده هر plugin؛
@@ -111,4 +111,6 @@ Rebuild با قالب `rahbar 0.1.0` بالا است، دیتابیس healthy ا
 - `WORKLOG.md` به‌عنوان مرجع ادامه کار ایجاد شد.
 - وضعیت واقعی Docker، قالب فعال و شمارش checklist دوباره بررسی شد.
 - checkpoint فعلی، blockerها و اقدام بعدی ثبت شدند.
-- نتیجه: آماده ایجاد اولین commit و push.
+- commit اولیه پروژه با hash `c3dc417` روی `origin/main` ثبت شد.
+- `WORKLOG.md` با commit `af554cb` اضافه و با موفقیت به GitHub push شد.
+- نتیجه: repository همگام و اقدام بعدی visual inventory صفحه Home است.
