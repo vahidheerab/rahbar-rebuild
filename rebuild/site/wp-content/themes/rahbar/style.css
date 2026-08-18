@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 0.4.0
+Version: 0.5.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -382,6 +382,128 @@ select {
 	border-top: 1px solid rgb(255 255 255 / 18%);
 }
 
+.rahbar-product-page {
+	padding-block: clamp(2rem, 5vw, 4rem);
+	background: linear-gradient(to bottom, #fff 0 9rem, #f5f0fb 9rem 40rem, #fff 40rem);
+}
+
+.rahbar-product-title {
+	margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+	font-size: clamp(1.45rem, 2.5vw, 2rem);
+}
+
+.rahbar-product-intro {
+	gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.rahbar-product-gallery-column .woocommerce-product-gallery,
+.rahbar-product-gallery-column img {
+	border-radius: var(--rahbar-radius-md);
+}
+
+.rahbar-product-summary {
+	padding: clamp(1.25rem, 2.5vw, 2rem);
+	border-radius: var(--rahbar-radius-md);
+	background: var(--wp--preset--color--primary-dark);
+	color: var(--wp--preset--color--surface);
+	box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-product-summary .wp-block-post-excerpt__excerpt {
+	margin: 0;
+}
+
+.rahbar-product-summary ul {
+	margin-block: 0;
+}
+
+.rahbar-product-access-notice {
+	margin-top: 1rem;
+	padding: 0.65rem 1rem;
+	border-radius: var(--rahbar-radius-sm);
+	background: var(--wp--preset--color--primary-soft);
+}
+
+.rahbar-product-access-notice p {
+	margin: 0;
+}
+
+.rahbar-product-info-icon {
+	display: grid;
+	width: 2rem;
+	height: 2rem;
+	flex: 0 0 auto;
+	place-items: center;
+	border-radius: 7px;
+	background: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--accent);
+	font-size: 1.35rem;
+	font-weight: 800;
+}
+
+.rahbar-product-instructor {
+	justify-content: flex-start;
+	margin-top: 1rem;
+}
+
+.rahbar-product-instructor p {
+	margin: 0;
+}
+
+.rahbar-product-tabs {
+	margin-block: 1.5rem 3rem;
+	padding-block: 0.75rem;
+	border-bottom: 1px solid var(--wp--preset--color--border);
+}
+
+.rahbar-product-tabs p {
+	margin: 0;
+}
+
+.rahbar-product-tabs a {
+	display: block;
+	padding: 0.45rem 0.9rem;
+	border-radius: 9px;
+	background: var(--wp--preset--color--primary-soft);
+	text-decoration: none;
+}
+
+.rahbar-product-main {
+	align-items: flex-start !important;
+	gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.rahbar-product-content {
+	padding: clamp(1.25rem, 2.5vw, 2rem);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--rahbar-radius-md);
+	background: var(--wp--preset--color--surface);
+}
+
+.rahbar-purchase-card {
+	position: sticky;
+	top: 1rem;
+	padding: 1.25rem;
+	border: 1px solid #d7cedf;
+	border-radius: var(--rahbar-radius-md);
+	background: var(--wp--preset--color--surface);
+	box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-purchase-card .wp-block-woocommerce-product-price {
+	padding-block: 1rem;
+	border-block: 1px dashed var(--wp--preset--color--border);
+}
+
+.rahbar-purchase-card .wc-block-components-product-price__regular {
+	color: var(--wp--preset--color--muted);
+}
+
+.rahbar-purchase-card .single_add_to_cart_button,
+.rahbar-purchase-card .wp-element-button {
+	width: 100%;
+}
+
 @media (max-width: 960px) {
 	.rahbar-benefits-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -433,9 +555,30 @@ select {
 	.rahbar-footer-columns {
 		gap: 2rem;
 	}
+
+	.rahbar-product-main {
+		flex-wrap: wrap !important;
+	}
+
+	.rahbar-product-content,
+	.rahbar-purchase-column {
+		flex-basis: 100% !important;
+	}
+
+	.rahbar-purchase-column {
+		order: -1;
+	}
+
+	.rahbar-purchase-card {
+		position: static;
+	}
 }
 
 @media (max-width: 600px) {
+	.wp-site-blocks {
+		padding-bottom: 6.5rem;
+	}
+
 	.rahbar-benefits-grid {
 		grid-template-columns: minmax(0, 1fr);
 	}
@@ -497,6 +640,102 @@ select {
 
 	.rahbar-legacy-hero__image img {
 		width: min(100%, 22rem);
+	}
+
+	.rahbar-product-page {
+		padding-top: 1.5rem;
+		background: linear-gradient(to bottom, #fff 0 7rem, #f5f0fb 7rem 54rem, #fff 54rem);
+	}
+
+	.rahbar-product-title {
+		width: 100%;
+		max-width: 100%;
+		margin-inline: 0;
+		font-size: 1.15rem;
+		line-height: 1.6;
+		overflow-wrap: anywhere;
+	}
+
+	.rahbar-product-gallery-column .wc-block-components-product-sale-badge {
+		right: 0.75rem;
+	}
+
+	.rahbar-product-intro {
+		gap: 1rem;
+	}
+
+	.rahbar-product-gallery-column {
+		order: -1;
+	}
+
+	.rahbar-product-summary,
+	.rahbar-product-content,
+	.rahbar-purchase-card {
+		padding: 1rem;
+	}
+
+	.rahbar-purchase-column {
+		position: fixed;
+		z-index: 100;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: auto !important;
+		min-height: 0;
+		padding: 0.65rem max(1rem, env(safe-area-inset-right)) max(0.65rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+		background: rgb(255 255 255 / 96%);
+		box-shadow: 0 -8px 30px rgb(54 30 80 / 16%);
+	}
+
+	.rahbar-purchase-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(9rem, 1.25fr);
+		gap: 0.75rem;
+		align-items: center;
+		max-width: 34rem;
+		margin: 0 auto;
+		border: 0;
+		box-shadow: none;
+		min-height: 0;
+	}
+
+	.rahbar-purchase-card > h2,
+	.rahbar-purchase-card > .wp-block-woocommerce-product-sale-badge,
+	.rahbar-purchase-card > .wp-block-woocommerce-product-stock-indicator,
+	.rahbar-purchase-card > .wp-block-separator,
+	.rahbar-purchase-card > .wp-block-woocommerce-product-meta {
+		display: none;
+	}
+
+	.rahbar-purchase-card .wp-block-woocommerce-product-price {
+		padding: 0;
+		border: 0;
+		font-size: 0.9rem !important;
+	}
+
+	.rahbar-purchase-card .wp-block-add-to-cart-form {
+		margin: 0;
+	}
+
+	.rahbar-purchase-card form.cart {
+		display: flex;
+		margin: 0 !important;
+	}
+
+	.rahbar-purchase-card .quantity {
+		display: none !important;
+	}
+
+	.rahbar-purchase-card .single_add_to_cart_button {
+		min-height: 3rem;
+		padding: 0.65rem 0.75rem;
+		font-size: 0.85rem;
+	}
+
+	.rahbar-product-tabs {
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.rahbar-topbar {

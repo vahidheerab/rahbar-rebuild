@@ -47,3 +47,10 @@ add_action(
 		);
 	}
 );
+
+add_filter(
+	'woocommerce_product_single_add_to_cart_text',
+	static function (): string {
+		return __( 'افزودن به سبد خرید', 'rahbar' );
+	}
+);

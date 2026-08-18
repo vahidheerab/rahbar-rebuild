@@ -20,11 +20,12 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 15 مورد تکمیل‌شده از 207 مورد
+- پیشرفت QA: 16 مورد تکمیل‌شده از 208 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
-- قالب فعال: `rahbar` نسخه `0.4.0`
+- قالب فعال: `rahbar` نسخه `0.5.0`
+- WooCommerce Rebuild: نسخه `11.0.1` در runtime فعال؛ کد ثالث ignore شده است
 - Repository مقصد: `git@github.com:vahidheerab/rahbar-rebuild.git`
 - وضعیت Git: branch `main` روی GitHub همگام است؛ bootstrap در `c3dc417` و گزارش پیوسته در `af554cb` ثبت شد
 
@@ -55,7 +56,8 @@
 
 ### پیاده‌سازی Rebuild
 
-- Block Theme اختصاصی `rahbar` تا نسخه 0.4.0 توسعه یافت.
+- Block Theme اختصاصی `rahbar` تا نسخه 0.5.0 توسعه یافت.
+- Product template بومی WooCommerce با visual parity و CTA ثابت mobile اضافه شد.
 - `theme.json`، design tokenها، header، footer و templateهای اصلی ایجاد شدند.
 - templateهای front page، page، single، archive، search و 404 اضافه شدند.
 - patternهای Hero، Benefits، Services و CTA اضافه شدند.
@@ -83,27 +85,38 @@
 | مورد | وضعیت | مالک/اقدام لازم |
 |---|---|---|
 | مجوز فونت ایران‌یکان و کلمه | باز | مالک پروژه باید مجوز و فایل منبع مجاز را تأیید کند |
-| visual baseline صفحه Home و Product | باز | screenshot و component inventory از Legacy تهیه شود |
+| visual baseline صفحه Home و Product | بسته | inventory و screenshotهای هر دو صفحه ثبت شده‌اند |
 | active/inactive افزونه‌های Legacy | باز | دسترسی read-only دیتابیس Legacy و استخراج `active_plugins` |
 | pluginهای پرداخت/LoginX/CRM/SMS/SpotPlayer | باز و بحرانی | audit کد، داده و قرارداد رفتاری قبل از migration |
 | Evidence پایدار baseline | باز | خروجی redacted در محل امن ثبت شود |
 
 ## آخرین checkpoint امن
 
-Rebuild با قالب `rahbar 0.4.0` بالا است، دیتابیس healthy است و صفحه اصلی HTTP 200 می‌دهد. بخش visible هدر، Hero و Benefits با assetها و screenshotهای Legacy در viewportهای 1440، 768 و 375 تطبیق یافته است. هیچ افزونه یا layout metadata مربوط به Elementor وارد Rebuild نشده است.
+Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Home و Product prototype HTTP 200 می‌دهند؛ صفحه محصول از داده واقعی WooCommerce و CTA قابل دسترس mobile استفاده می‌کند. هیچ افزونه یا layout metadata مربوط به Elementor وارد repository نشده است.
 
 ## اقدام بعدی اصلی
 
-Product template prototype را با بیشترین شباهت به baseline محصول نمونه بساز و CTA خرید را در Mobile پیش از محتوای طولانی قابل دسترس نگه دار.
+`INF-ISO-001` را اجرا کن و نام project، container، network، volume، port و مسیر mount هر دو محیط Legacy/Rebuild را به‌عنوان evidence ایزولیشن ثبت کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
-2. استخراج active pluginها و مالکیت داده هر plugin؛
-3. اجرای responsive/RTL و interaction test کامل روی Home؛
-4. تهیه baseline جداگانه برای Footer و سکشن‌های پایین‌تر Home.
+1. استخراج active pluginها و مالکیت داده هر plugin؛
+2. اجرای responsive/RTL و interaction test کامل روی Home؛
+3. تهیه baseline جداگانه برای Footer و سکشن‌های پایین‌تر Home؛
+4. تعیین قرارداد canonical ریال/تومان و منبع metadata دوره.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `woocommerce-product-prototype-v0.5.0`
+
+- WooCommerce رسمی `11.0.1` فقط در runtime Rebuild نصب و فعال شد؛ کد ثالث در Git ignore است.
+- حالت پیش‌فرض Coming Soon خاموش و currency prototype روی تومان با صفر رقم اعشار تنظیم شد.
+- محصول نمونه simple/virtual/instock با قیمت عادی و فروش Legacy و تصویر شاخص واقعی ساخته شد.
+- `single-product.html` با بلوک‌های native قیمت، sale badge، stock و add-to-cart ساخته شد.
+- layout Desktop/Tablet با Legacy تطبیق و overflow بحرانی mobile رفع شد.
+- CTA موبایل به نوار ثابت price/add-to-cart تبدیل شد و متن دکمه فارسی شد.
+- شواهد و محدودیت‌های price/LMS/SpotPlayer در `docs/baseline/rebuild-product-prototype-report.md` ثبت شدند.
+- checkpoint: `WC-PROD-PROT-001` تکمیل؛ اقدام بعدی اجرای `INF-ISO-001` است.
 
 ### 2026-08-18 — `home-legacy-visual-parity-v0.4.0`
 

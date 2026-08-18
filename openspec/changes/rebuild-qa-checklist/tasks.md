@@ -135,7 +135,8 @@
 - [ ] 8.11 `WC-ACC-001` لیست/جزئیات سفارش، download و دسترسی مالک/غیرمالک را تست کن
 - [ ] 8.12 `WC-CAN-001` cancel، failed، refund جزئی/کامل و بازگشت موجودی را تست کن
 - [ ] 8.13 `WC-ADM-001` جست‌وجو، filter، note، edit مجاز و export سفارش در مدیریت را تست کن
-- [ ] 8.14 `GATE-WC` مسیر کامل browse→checkout→order→email→account قبول باشد
+- [x] 8.14 `WC-PROD-PROT-001` Product template نمونه را با داده واقعی WooCommerce، visual parity و CTA قابل دسترس mobile بساز — Evidence: theme `rahbar` v0.5.0، WooCommerce runtime 11.0.1، سه screenshot و گزارش `docs/baseline/rebuild-product-prototype-report.md`، 2026-08-18
+- [ ] 8.15 `GATE-WC` مسیر کامل browse→checkout→order→email→account قبول باشد
 
 ## 9. پرداخت و callback
 
