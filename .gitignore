@@ -1,0 +1,88 @@
+# Local tooling and editors
+.agents/
+.claude/
+.freebuff/
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Secrets and local environment overrides
+.env
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+
+# Logs, caches, temporary files and test evidence
+*.log
+*.cache
+*.tmp
+*.temp
+*.bak
+*.bk
+*.backup
+test-evidence/
+coverage/
+.phpunit.result.cache
+
+# Dependency and build output
+node_modules/
+vendor/
+dist/
+build/
+
+# Legacy is a local behavioral/data reference, not part of rebuild source control
+legacy/
+
+# Database dumps and archives must never be committed
+*.sql
+*.sql.gz
+*.dump
+*.tar
+*.tar.gz
+*.zip
+
+# WordPress core and runtime-generated content in Rebuild
+rebuild/site/*
+!rebuild/site/wp-content/
+rebuild/site/wp-content/*
+
+# Track only first-party Rebuild themes and plugins explicitly allowed below
+!rebuild/site/wp-content/themes/
+rebuild/site/wp-content/themes/*
+!rebuild/site/wp-content/themes/rahbar/
+!rebuild/site/wp-content/themes/rahbar/**
+
+# Add first-party plugins here when they are created, for example:
+# !rebuild/site/wp-content/plugins/
+# rebuild/site/wp-content/plugins/*
+# !rebuild/site/wp-content/plugins/rahbar-example/
+# !rebuild/site/wp-content/plugins/rahbar-example/**
+
+# WordPress runtime artifacts (defense in depth)
+**/wp-content/uploads/
+**/wp-content/cache/
+**/wp-content/litespeed/
+**/wp-content/upgrade/
+**/wp-content/upgrade-temp-backup/
+**/wp-content/languages/
+**/wp-content/wflogs/
+**/wp-content/debug.log
+**/wp-content/error_log
+**/advanced-cache.php
+**/object-cache.php
+**/wp-config.php
+**/.htaccess
+
+# Windows reserved artifact
+nul

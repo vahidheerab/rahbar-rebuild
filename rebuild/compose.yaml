@@ -1,0 +1,54 @@
+name: rahbar-rebuild
+services:
+  db:
+    image: mysql:8.4.3
+    restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: ${REBUILD_DB_NAME:-rahbar_rebuild}
+      MYSQL_USER: ${REBUILD_DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${REBUILD_DB_PASSWORD:-rebuild-local-only}
+      MYSQL_ROOT_PASSWORD: ${REBUILD_DB_ROOT_PASSWORD:-rebuild-root-local-only}
+    volumes: [rebuild_db:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks: [rebuild_network]
+  wordpress:
+    image: wordpress:7.0.2-php8.5-apache
+    restart: unless-stopped
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ["${REBUILD_HTTP_PORT:-8082}:80"]
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${REBUILD_DB_NAME:-rahbar_rebuild}
+      WORDPRESS_DB_USER: ${REBUILD_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${REBUILD_DB_PASSWORD:-rebuild-local-only}
+      WORDPRESS_TABLE_PREFIX: wp_
+      REBUILD_URL: ${REBUILD_URL:-http://localhost:8082}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', getenv('REBUILD_URL') ?: 'http://localhost:8082');
+        define('WP_SITEURL', getenv('REBUILD_URL') ?: 'http://localhost:8082');
+        define('DISALLOW_FILE_EDIT', true);
+    volumes:
+      - ./site:/var/www/html
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/zz-rebuild.ini:ro
+    networks: [rebuild_network]
+  phpmyadmin:
+    image: phpmyadmin:5.2.2-apache
+    restart: unless-stopped
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ["${REBUILD_PHPMYADMIN_PORT:-8084}:80"]
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 512M
+    networks: [rebuild_network]
+volumes:
+  rebuild_db:
+networks:
+  rebuild_network: {driver: bridge}

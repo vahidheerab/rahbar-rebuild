@@ -1,0 +1,59 @@
+/*
+Theme Name: Rahbar
+Theme URI: https://rahbarhesab.com/
+Author: Rahbar
+Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
+Version: 0.1.0
+Requires at least: 7.0
+Tested up to: 7.0
+Requires PHP: 8.1
+Text Domain: rahbar
+*/
+
+:root {
+	color-scheme: light;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+	transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+	outline: 3px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+}
+
+.wp-site-blocks {
+	min-height: 100vh;
+}
+
+.rahbar-card {
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 16px;
+	box-shadow: 0 12px 35px rgb(54 30 80 / 8%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}
