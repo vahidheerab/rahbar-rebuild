@@ -53,7 +53,8 @@
 - [ ] 3.16 `INV-EXT-001` cron، API، webhook، SMTP، analytics و سرویس‌های بیرونی را ثبت کن
 - [ ] 3.17 `INV-MEDIA-001` مسیرها، حجم، mime type، private media و broken attachmentها را ثبت کن
 - [ ] 3.18 `INV-COUNT-001` شمارش baseline همه entityهای حساس و مجموع‌های مالی را در جدول reconciliation ثبت کن
-- [ ] 3.19 `GATE-INVENTORY` هر قابلیت Legacy مالک، تصمیم مقصد، معیار پذیرش و وابستگی مشخص داشته باشد
+- [x] 3.20 `INV-UI-003` visual inventory صفحه Home را در سه viewport ثبت و mapping مقصد را تعریف کن — Evidence: `docs/baseline/legacy-home-visual-inventory.md` و سه screenshot، 2026-08-18
+- [ ] 3.21 `GATE-INVENTORY` هر قابلیت Legacy مالک، تصمیم مقصد، معیار پذیرش و وابستگی مشخص داشته باشد
 
 ## 4. قرارداد معماری و ماتریس parity
 

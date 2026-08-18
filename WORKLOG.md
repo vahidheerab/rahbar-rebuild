@@ -20,7 +20,7 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 10 مورد تکمیل‌شده از 202 مورد
+- پیشرفت QA: 11 مورد تکمیل‌شده از 203 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
@@ -94,17 +94,28 @@ Rebuild با قالب `rahbar 0.1.0` بالا است، دیتابیس healthy ا
 
 ## اقدام بعدی اصلی
 
-visual inventory صفحه Home در Legacy را تکمیل و componentها، spacing، typography، responsive behavior و تفاوت‌های عمدی مقصد را ثبت کن.
+visual inventory صفحه Product در Legacy را تکمیل و template، gallery، price، purchase CTA، metadata و responsive behavior را ثبت کن.
 
 ## صف کار پس از اقدام اصلی
 
-1. visual inventory صفحه Product در Legacy؛
-2. تثبیت design tokenها و تکمیل header/footer مطابق baseline؛
+1. تثبیت design tokenها و تکمیل header/footer مطابق baseline Home؛
+2. ساخت Benefits pattern چهارگانه با layout دو ستونه tablet و تک‌ستونه mobile؛
 3. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
 4. استخراج active pluginها و مالکیت داده هر plugin؛
 5. ساخت prototype قابل مقایسه Home در Rebuild و اجرای responsive/RTL smoke test.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `legacy-home-visual-inventory`
+
+- Legacy و هر سه سرویس آن healthy تأیید شدند.
+- screenshotهای Home در 1440×900، 768×1024 و 375×812 ثبت شدند.
+- ساختار top bar، header، navigation، Hero، benefit cards و floating action مستند شد.
+- tokenهای رنگ و typography و mapping به Block Theme ثبت شدند.
+- finding کارایی: Home حدود 648KB HTML دارد؛ یک درخواست بیش از یک دقیقه طول کشید و استخراج کامل HTML بعدی به‌دلیل زمان غیرعادی متوقف شد.
+- باگ‌هایی که نباید بازتولید شوند ثبت شدند: کارت‌های باریک tablet و حذف search/navigation واضح در mobile.
+- verification: فایل‌های PNG بازبینی بصری و سند baseline ایجاد شد.
+- checkpoint: `INV-UI-003` تکمیل؛ اقدام بعدی inventory صفحه Product است.
 
 ### 2026-08-18 — `repo-bootstrap-and-continuity-log`
 
