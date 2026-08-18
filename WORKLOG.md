@@ -94,15 +94,25 @@ Rebuild با قالب `rahbar 0.3.0` بالا است، دیتابیس healthy ا
 
 ## اقدام بعدی اصلی
 
-Product template prototype را بر اساس baseline محصول نمونه بساز و CTA خرید را در Mobile پیش از محتوای طولانی قابل دسترس نگه دار.
+یک visual-parity pass روی Home اجرا کن و Header، Hero، Benefits و Footer موجود را تا بیشترین شباهت به screenshotهای Legacy اصلاح کن؛ فقط اختلاف‌های لازم برای رفع نقص فنی را نگه دار.
 
 ## صف کار پس از اقدام اصلی
 
-1. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
-2. استخراج active pluginها و مالکیت داده هر plugin؛
-3. اجرای responsive/RTL smoke test کامل روی Home prototype.
+1. ساخت Product template با بیشترین شباهت به baseline و CTA قابل دسترس در Mobile؛
+2. اجرای `INF-ISO-001` و ثبت project/container/network/volume دو محیط؛
+3. استخراج active pluginها و مالکیت داده هر plugin؛
+4. اجرای responsive/RTL smoke test کامل روی Home.
 
 ## تاریخچه نشست‌ها
+
+### 2026-08-18 — `visual-parity-direction`
+
+- مالک پروژه تعیین کرد نسخه نخست Rebuild باید برای جایگزینی سریع روی هاست، بیشترین شباهت بصری و رفتاری را به Legacy داشته باشد.
+- بازطراحی مدرن و تغییر هویت بصری به فاز بعد از Cutover منتقل شد.
+- اختلاف با Legacy فقط برای رفع مشکل فنی، responsive، accessibility، performance، امنیت یا حذف Elementor مجاز است.
+- ADR-0001 و roadmap با این قید تکمیل شدند.
+- prototypeهای فعلی Header، Hero، Benefits و Footer نهایی نیستند و باید visual-parity pass شوند.
+- checkpoint: تصمیم محصول ثبت شد؛ اقدام بعدی تطبیق بصری کامل Home با baseline است.
 
 ### 2026-08-18 — `rebuild-home-benefits-v0.3.0`
 

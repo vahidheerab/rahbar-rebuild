@@ -16,6 +16,12 @@ Elementor، Elementor Pro، Hello Elementor، JSON layoutها و CSS تولید�
 
 منطق WooCommerce، پرداخت، LMS، SpotPlayer و integrationها نباید داخل theme قرار گیرد و باید در pluginهای مستقل نگهداری شود.
 
+### قید شباهت بصری تا زمان Cutover
+
+به تصمیم مالک پروژه در 2026-08-18، فاز نخست Rebuild «بازطراحی ظاهری» نیست. خروجی قابل جایگزینی روی هاست باید بیشترین شباهت عملی به Legacy را در ساختار، ترتیب سکشن‌ها، رنگ، typography، تصویر، فاصله‌گذاری و جزئیات بصری داشته باشد. تفاوت فقط زمانی مجاز است که برای رفع نقص فنی، overflow، accessibility، performance، امنیت یا حذف وابستگی Elementor لازم باشد.
+
+بازطراحی و تغییر هویت بصری به فاز مستقلی پس از Cutover موفق منتقل می‌شود. prototypeهای اولیه‌ای که صرفاً ساختار فنی را اثبات کرده‌اند، خروجی نهایی تلقی نمی‌شوند و باید پیش از پذیرش UI با baseline تصویری Legacy تطبیق داده شوند.
+
 ## روش انتقال UI
 
 1. صفحات مهم Legacy در viewportهای مصوب screenshot و inventory می‌شوند.
@@ -23,7 +29,7 @@ Elementor، Elementor Pro، Hello Elementor، JSON layoutها و CSS تولید�
 3. header، footer و componentهای مشترک ابتدا ساخته می‌شوند.
 4. templateهای home، page، archive، single، product، course، account، cart، checkout، search و 404 بازسازی می‌شوند.
 5. متن و media معتبر منتقل می‌شود؛ layout metadata مربوط به Elementor منتقل نمی‌شود.
-6. پذیرش با visual regression، RTL، accessibility و performance انجام می‌شود.
+6. پذیرش با visual regression در برابر Legacy، RTL، accessibility و performance انجام می‌شود؛ هر اختلاف بصری عمدی باید مستند و دارای دلیل فنی باشد.
 
 ## پیامدها
 
