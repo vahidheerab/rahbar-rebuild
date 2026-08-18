@@ -1,6 +1,6 @@
 # فهرست و تصمیم افزونه‌های Rahbar
 
-تاریخ inventory: 2026-08-18. این سند تصمیم اولیه برای Rebuild است؛ حذف فیزیکی از Legacy مجاز نیست. وضعیت فعال/غیرفعال هنوز از دیتابیس تأیید نشده است، بنابراین پیش از migration داده هر افزونه باید با option `active_plugins` و داده‌های متعلق به آن تطبیق داده شود.
+تاریخ inventory: 2026-08-18. این سند تصمیم اولیه برای Rebuild است؛ حذف فیزیکی از Legacy مجاز نیست. وضعیت فعال/غیرفعال در 2026-08-18 مستقیماً از option `active_plugins` دیتابیس Legacy خوانده و با فایل‌های موجود تطبیق داده شد. این بررسی read-only بود.
 
 معانی تصمیم‌ها:
 
@@ -19,7 +19,35 @@
 | cache drop-in | 1 |
 | نسخه‌های تکراری آشکار | `loginx` و `loginx1` |
 | stackهای دارای هم‌پوشانی | cache/performance، payment، editor/page-builder |
-| وضعیت active/inactive | نیازمند خواندن دیتابیس Legacy |
+| وضعیت active/inactive | 22 افزونه فعال و موجود، 4 افزونه غیرفعال و موجود، 1 ورودی فعال ولی مفقود (`wp-crontrol`) |
+
+## وضعیت واقعی فعال‌بودن در Legacy
+
+منبع حقیقت این بخش `wp_options.active_plugins` است. option مربوط به network activation وجود نداشت؛ این نصب multisite فعال ندارد.
+
+- **فعال و موجود (22):** SMS.ir، Antispam Bee، Change Mail Sender، Classic Editor، Code Snippets، Elementor، Elementor Pro، Zibal Multiplexing Gateway، LiteSpeed Cache، LoginX 1.4 (`loginx`)، Perfmatters، Rahbar CRM Connector، Rank Math SEO/Pro، SpotPlayer، Advanced Editor Tools، MediaMan، Checkout Field Editor Pro، Advanced Order Export، TeraWallet، WooCommerce و WP-Parsidate.
+- **غیرفعال و موجود (4):** Kadence Security Basic، LoginX 1.5 (`loginx1`)، Query Monitor و Rahbar IPG Gateway.
+- **فعال ولی فایل مفقود (1):** `wp-crontrol/wp-crontrol.php` در option فعال است اما دایرکتوری آن در snapshot موجود نیست. این مورد پیش از هر migration یا بازسازی cron باید تعیین تکلیف شود؛ نصب یا حذف آن در Legacy در این مرحله انجام نشد.
+- **همیشه فعال:** چهار MU-plugin ثبت‌شده در بخش پایین؛ `advanced-cache.php` نیز drop-in است و وضعیت آن مستقل از `active_plugins` است.
+
+## مالکیت داده مشاهده‌شده
+
+این جدول از نام جدول‌های واقعی دیتابیس و فایل‌های افزونه‌ها ساخته شده است. مالکیت option/meta/cron/endpoint هنوز باید در audit عمیق هر integration تکمیل شود؛ نبودن نام یک افزونه در این جدول به معنی بی‌داده‌بودن آن نیست.
+
+| مالک/قابلیت | داده یا جدول مشاهده‌شده | نتیجه برای Rebuild |
+|---|---|---|
+| WooCommerce / Action Scheduler | `wp_wc_*`، `wp_woocommerce_*`، `wp_actionscheduler_*` و order/product meta | migration و reconciliation سفارش، محصول، دانلود و jobها اجباری است؛ جدول‌های HPOS نیز موجودند. |
+| Elementor / Elementor Pro | `wp_e_*` به‌علاوه metadata داخل `wp_postmeta` | submissionها قبل از retire export شوند؛ layout metadata به قالب مقصد منتقل نمی‌شود. |
+| Code Snippets | `wp_snippets` | snippetهای فعال باید جداگانه export، review و به کد version-controlled تبدیل شوند. |
+| LoginX / سامانه ورود | `wp_loginx_types*`، `wp_logini_ips` و جدول‌های `wp_digits_*` | دو نسل داده ورود/OTP دیده می‌شود؛ مالک دقیق جدول‌های Digits و سازگاری حساب‌ها باید audit شود. |
+| SMS.ir | `wp_sms_ir_app_log` و `wp_sms_ir_app_notifications` | تنظیمات، templateها و وضعیت ارسال بدون انتقال credential خام inventory شوند. |
+| Zibal / payment | `wp_gf_zibal` و داده‌های سفارش/پرداخت WooCommerce | callback، شناسه تراکنش و idempotency پیش از consolidation تطبیق داده شوند. |
+| TeraWallet | `wp_woo_wallet_transactions`، `wp_woo_wallet_transaction_meta`، `wp_woo_wallet_referrals` | مانده و ledger تعهد مالی‌اند و باید checksum/reconciliation مستقل داشته باشند. |
+| Rank Math | `wp_rank_math_*` | redirect، 404، internal-link و analytics جدا از post meta نگهداری می‌شوند و باید تصمیم migrate/retire داشته باشند. |
+| Kadence/iThemes Security | `wp_itsec_*` | افزونه اکنون غیرفعال است اما داده امنیتی باقی مانده؛ انتقال مستقیم این جداول توصیه نمی‌شود. |
+| LiteSpeed Cache | `wp_litespeed_*` و `advanced-cache.php` | داده cache مهاجرت نمی‌کند؛ هنگام cutover باید purge/regenerate شود. |
+| MediaMan | `wp_mclean_refs` و `wp_mclean_scan` | صرفاً داده ابزار inventory است و به production مقصد منتقل نمی‌شود. |
+| LMS/Quiz/Ticket/سایر کدهای قدیمی | `wp_tutor_*`، `wp_quizmaker_*`، `wp_tkt_*`، `wp_xsmscore_*` و چند جدول YITH/Slider | جدول‌ها وجود دارند ولی افزونه مالک در snapshot نصب‌شده دیده نشد؛ این‌ها orphan یا dependency حذف‌شده محتمل‌اند و در `INV-DATA-002` باید تعیین مالک شوند. |
 
 ## افزونه‌های معمولی Legacy
 

@@ -20,7 +20,7 @@
 
 - تاریخ checkpoint: 2026-08-18
 - فاز جاری: پایه Rebuild و شروع بازسازی UI، همراه با تکمیل Inventory
-- پیشرفت QA: 17 مورد تکمیل‌شده از 208 مورد
+- پیشرفت QA: 18 مورد تکمیل‌شده از 208 مورد
 - Rebuild WordPress: فعال روی <http://localhost:8082>
 - Rebuild phpMyAdmin: فعال روی <http://localhost:8084>
 - MySQL Rebuild: healthy
@@ -198,3 +198,12 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - commit اولیه پروژه با hash `c3dc417` روی `origin/main` ثبت شد.
 - `WORKLOG.md` با commit `af554cb` اضافه و با موفقیت به GitHub push شد.
 - نتیجه: repository همگام و اقدام بعدی visual inventory صفحه Home است.
+
+### 2026-08-18 — `legacy-plugin-state-and-data-ownership`
+
+- option `active_plugins` به‌صورت read-only مستقیماً از دیتابیس Legacy خوانده و با پوشه‌های واقعی plugin تطبیق داده شد.
+- 22 افزونه فعال و موجود، 4 افزونه غیرفعال و موجود، و یک ورودی فعال با فایل مفقود (`wp-crontrol`) شناسایی شد.
+- چهار MU-plugin و drop-in کش مستقل از option فعال‌سازی تأیید شدند.
+- همه جدول‌های Legacy فهرست و مالکیت داده‌های WooCommerce، Elementor، Code Snippets، Login/OTP، SMS، payment، wallet، SEO، security، cache و media در `PLUGIN-INVENTORY.md` ثبت شد.
+- جدول‌های محتمل orphan/dependency حذف‌شده Tutor، Quiz Maker، ticket، YITH و Slider به‌عنوان finding باز ثبت شدند و هیچ داده یا افزونه‌ای حذف نشد.
+- checkpoint: `INV-PLG-001` تکمیل؛ اقدام بعدی اجرای `INV-CODE-001` با export امن metadata مربوط به snippetهای فعال و inventory کد اختصاصی است.
