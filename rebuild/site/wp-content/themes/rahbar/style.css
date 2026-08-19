@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 0.5.0
+Version: 0.7.2
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -11,42 +11,42 @@ Text Domain: rahbar
 */
 
 :root {
-	color-scheme: light;
-	--rahbar-radius-sm: 10px;
-	--rahbar-radius-md: 16px;
-	--rahbar-radius-lg: 20px;
-	--rahbar-shadow-sm: 0 8px 24px rgb(54 30 80 / 8%);
-	--rahbar-shadow-md: 0 16px 42px rgb(54 30 80 / 12%);
+  color-scheme: light;
+  --rahbar-radius-sm: 10px;
+  --rahbar-radius-md: 16px;
+  --rahbar-radius-lg: 20px;
+  --rahbar-shadow-sm: 0 8px 24px rgb(54 30 80 / 8%);
+  --rahbar-shadow-md: 0 16px 42px rgb(54 30 80 / 12%);
 }
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	min-width: 320px;
-	overflow-x: clip;
-	text-rendering: optimizeLegibility;
+  min-width: 320px;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
 }
 
 .wp-site-blocks > *,
 .rahbar-site-brand,
 .rahbar-header-main,
 .rahbar-header-nav-row {
-	min-width: 0;
+  min-width: 0;
 }
 
 img,
 svg,
 video {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 a,
@@ -54,709 +54,1259 @@ button,
 input,
 textarea,
 select {
-	transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 :where(a, button, input, textarea, select):focus-visible {
-	outline: 3px solid var(--wp--preset--color--accent);
-	outline-offset: 3px;
+  outline: 3px solid var(--wp--preset--color--accent);
+  outline-offset: 3px;
 }
 
 .wp-site-blocks {
-	min-height: 100vh;
-	overflow-wrap: anywhere;
+  min-height: 100vh;
+  overflow-wrap: anywhere;
 }
 
 .rahbar-card {
-	border: 1px solid var(--wp--preset--color--border);
-	border-radius: var(--rahbar-radius-md);
-	box-shadow: var(--rahbar-shadow-sm);
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  box-shadow: var(--rahbar-shadow-sm);
 }
 
 .rahbar-visually-hidden {
-	position: absolute !important;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .rahbar-topbar {
-	padding-block: 0.35rem;
+  padding-block: 0.2rem;
 }
 
 .rahbar-topbar > .wp-block-group {
-	gap: 0.75rem;
+  gap: 0.75rem;
 }
 
 .rahbar-topbar p {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-topbar-signup .wp-block-button__link {
-	padding: 0.35rem 0.8rem;
-	border-radius: 8px;
-	white-space: nowrap;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  white-space: nowrap;
 }
 
 .rahbar-legacy-header {
-	padding-block: 0.75rem;
+  padding-block: 0.45rem;
 }
 
 .rahbar-legacy-logo {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-phone-icon {
-	margin: 0;
-	color: var(--wp--preset--color--accent);
-	font-size: 2.5rem;
-	line-height: 1;
+  margin: 0;
+  color: var(--wp--preset--color--accent);
+  font-size: 2.5rem;
+  line-height: 1;
 }
 
 .rahbar-mobile-actions {
-	display: none;
+  display: none;
 }
 
 .rahbar-icon-button .wp-block-button__link {
-	display: grid;
-	width: 2.75rem;
-	height: 2.75rem;
-	padding: 0;
-	place-items: center;
-	border-radius: 10px;
-	font-size: 1.25rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 1.25rem;
 }
 
 .rahbar-header-nav {
-	padding-block: 0.45rem;
-	border-bottom: 1px solid var(--wp--preset--color--border);
+  padding-block: 0.25rem;
+  border-bottom: 1px solid var(--wp--preset--color--border);
 }
 
 .rahbar-header-nav-row {
-	font-size: 0.875rem;
+  font-size: 0.875rem;
+  min-height: 2.7rem;
 }
 
 .rahbar-header-actions .wp-block-button__link {
-	padding: 0.45rem 0.7rem;
-	border-radius: 9px;
-	font-size: 0.8125rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 9px;
+  font-size: 0.8125rem;
 }
 
 .rahbar-legacy-hero {
-	position: relative;
-	padding-block: clamp(1.5rem, 3vw, 2.5rem) 0;
-	background-color: #fff;
-	background-image: url("assets/images/legacy-hero-waves.svg");
-	background-repeat: no-repeat;
-	background-position: 72% 34%;
-	background-size: min(58rem, 70vw) auto;
+  position: relative;
+  padding-block: 0;
+  background-color: #fff;
+  background-image: url('assets/images/legacy-hero-waves.svg');
+  background-repeat: no-repeat;
+  background-position: 69% 57%;
+  background-size: min(48rem, 58vw) auto;
 }
 
 .rahbar-legacy-hero__layout {
-	min-height: 29rem;
-	margin-bottom: 0;
+  min-height: 29rem;
+  margin-bottom: 0;
 }
 
 .rahbar-legacy-hero__card {
-	position: relative;
-	z-index: 2;
-	padding: clamp(2rem, 4vw, 3.5rem);
-	border: 1px solid var(--wp--preset--color--border);
-	border-radius: 18px 18px 18px 0;
-	background: rgb(255 255 255 / 92%);
-	box-shadow: var(--rahbar-shadow-sm);
+  position: relative;
+  z-index: 2;
+  padding: 2.8rem 1.65rem 1.1rem;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: var(--rahbar-shadow-sm);
 }
 
 .rahbar-legacy-hero__card::before {
-	content: "♞";
-	display: grid;
-	width: 3rem;
-	height: 3rem;
-	margin-bottom: 1rem;
-	place-items: center;
-	border-radius: 50%;
-	background: var(--wp--preset--color--accent);
-	color: #fff;
-	font-size: 1.4rem;
+  content: '♞';
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--wp--preset--color--accent);
+  color: #fff;
+  font-size: 1.4rem;
 }
 
 .rahbar-legacy-hero__card::after {
-	content: "";
-	position: absolute;
-	right: auto;
-	bottom: -1px;
-	left: -1px;
-	width: 5.5rem;
-	height: 5.5rem;
-	border-bottom: 3px solid #9c43bf;
-	border-left: 3px solid #9c43bf;
-	border-radius: 0 0 18px 0;
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  left: auto;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-bottom: 3px solid #9c43bf;
+  border-right: 3px solid #9c43bf;
+  border-radius: 0 0 16px 0;
 }
 
 .rahbar-legacy-hero__eyebrow {
-	margin-top: 0;
-	font-size: clamp(1rem, 1.7vw, 1.35rem);
-	font-weight: 700;
+  margin: 0 0 0.5rem;
+  font-size: clamp(1rem, 1.55vw, 1.2rem);
+  font-weight: 700;
 }
 
 .rahbar-legacy-hero__title {
-	font-size: clamp(1.35rem, 2.2vw, 2rem);
+  margin-block: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.65;
 }
 
 .rahbar-legacy-hero__summary {
-	margin-bottom: 0;
-	color: var(--wp--preset--color--muted);
+  margin: 0.5rem 0 0;
+  color: var(--wp--preset--color--muted);
 }
 
 .rahbar-legacy-hero__image {
-	position: relative;
-	z-index: 1;
-	margin: 0;
+  position: relative;
+  z-index: 1;
+  margin: 0;
 }
 
 .rahbar-legacy-hero__image img {
-	display: block;
-	width: min(100%, 26rem);
-	margin-inline: auto;
+  display: block;
+  width: min(108%, 28rem);
+  margin-inline: auto;
 }
 
 .rahbar-benefits-grid {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.05rem;
+  align-items: start;
 }
 
 .rahbar-benefit-card {
-	position: relative;
-	min-height: 100%;
-	padding: clamp(1.25rem, 2.5vw, 2rem);
-	padding-top: clamp(4.75rem, 7vw, 5.5rem);
-	border: 1px solid var(--wp--preset--color--border);
-	border-radius: var(--rahbar-radius-md);
-	background: var(--wp--preset--color--surface);
-	box-shadow: var(--rahbar-shadow-sm);
-}
-
-.rahbar-benefit-card::after {
-	content: "";
-	position: absolute;
-	inset: 44% 0 0;
-	z-index: 0;
-	border-radius: 0 0 var(--rahbar-radius-md) var(--rahbar-radius-md);
-	background: #e1e1e1;
-}
-
-.rahbar-benefit-card:nth-child(even)::after {
-	display: none;
-}
-
-.rahbar-benefit-card > * {
-	position: relative;
-	z-index: 1;
+  position: relative;
+  min-height: 100%;
+  padding: 3.15rem 1.25rem 1.4rem;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  background: var(--wp--preset--color--surface);
+  box-shadow: var(--rahbar-shadow-sm);
+  text-align: center;
 }
 
 .rahbar-benefit-card:nth-child(even) {
-	background: var(--wp--preset--color--surface-alt);
+  margin-top: -3.4rem;
+}
+
+.rahbar-benefit-card h3 {
+  font-size: 1rem !important;
+  line-height: 1.8;
+}
+
+.rahbar-benefit-card p {
+  font-size: 0.82rem !important;
+  line-height: 2;
+  text-align: justify;
+}
+
+.rahbar-benefit-card::after {
+  content: '';
+  position: absolute;
+  inset: 44% 0 0;
+  z-index: 0;
+  border-radius: 0 0 var(--rahbar-radius-md) var(--rahbar-radius-md);
+  background: #e1e1e1;
+}
+
+.rahbar-benefit-card:nth-child(even)::after {
+  display: none;
+}
+
+.rahbar-benefit-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rahbar-benefit-card:nth-child(even) {
+  background: var(--wp--preset--color--surface-alt);
 }
 
 .rahbar-benefit-card::before {
-	position: absolute;
-	top: 1.25rem;
-	inset-inline-start: 1.25rem;
-	display: grid;
-	min-height: 2.75rem;
-	place-items: center;
-	border-radius: 50%;
-	z-index: 2;
-	width: 3rem;
-	height: 3rem;
-	background: var(--wp--preset--color--surface);
-	background-image: url("assets/images/legacy-education.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 2.8rem;
-	color: var(--wp--preset--color--primary-dark);
-	font-size: 1.25rem;
-	font-weight: 800;
+  position: absolute;
+  top: 1.25rem;
+  inset-inline-start: 1.25rem;
+  display: grid;
+  min-height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  background: var(--wp--preset--color--surface);
+  background-image: url('assets/images/legacy-education.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2.8rem;
+  color: var(--wp--preset--color--primary-dark);
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .rahbar-benefit-card--courses::before {
-	content: "";
+  content: '';
 }
 
 .rahbar-benefit-card--certificate::before {
-	content: "";
+  content: '';
 }
 
 .rahbar-benefit-card--questions::before {
-	content: "";
+  content: '';
 }
 
 .rahbar-benefit-card--support::before {
-	content: "";
+  content: '';
 }
 
 .rahbar-benefit-card > :last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.rahbar-latest-courses {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: #fff;
+}
+
+.rahbar-section-title {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-right: 0.9rem;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+}
+
+.rahbar-section-title::before {
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  right: 0;
+  width: 3px;
+  height: 1.25em;
+  border-radius: 999px;
+  background: var(--wp--preset--color--primary);
+}
+
+.rahbar-course-track {
+  display: grid !important;
+  grid-auto-columns: minmax(16rem, 18rem);
+  grid-auto-flow: column;
+  grid-template-columns: none !important;
+  gap: 1.25rem;
+  padding: 0.5rem 0 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--wp--preset--color--primary-soft) transparent;
+}
+
+.rahbar-course-card {
+  min-height: 31rem;
+  padding: 0 0 1.15rem;
+  overflow: hidden;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+  scroll-snap-align: start;
+}
+
+.rahbar-course-card__image {
+  margin: 0;
+}
+
+.rahbar-course-card__image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.rahbar-course-card__title,
+.rahbar-course-card__price {
+  margin: 1rem 1rem 0;
+}
+
+.rahbar-course-card__title {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.rahbar-course-card__title a {
+  color: var(--wp--preset--color--primary-dark);
+  text-decoration: none;
+}
+
+.rahbar-course-card__price {
+  color: var(--wp--preset--color--primary);
+  font-weight: 700;
+}
+
+.rahbar-finance {
+  padding-block: clamp(3rem, 7vw, 6rem);
+  background: linear-gradient(100deg, #fff 0 38%, #f0f0f0 100%);
+}
+
+.rahbar-finance__layout {
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-block: 0;
+}
+
+.rahbar-finance__content {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.rahbar-finance__title {
+  margin-top: 0;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.8;
+}
+
+.rahbar-finance__intro {
+  color: var(--wp--preset--color--muted);
+  font-size: 0.95rem;
+  line-height: 2.1;
+}
+
+.rahbar-check-list {
+  padding: 0;
+  list-style: none;
+}
+
+.rahbar-check-list li {
+  position: relative;
+  margin-block: 0.55rem;
+  padding-right: 1.75rem;
+  font-weight: 600;
+}
+
+.rahbar-check-list li::before {
+  content: '✓';
+  position: absolute;
+  right: 0;
+  top: 0.05rem;
+  display: grid;
+  width: 1.15rem;
+  height: 1.15rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--wp--preset--color--primary);
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+.rahbar-arrow-button .wp-block-button__link {
+  padding: 0.7rem 1.15rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+.rahbar-arrow-button .wp-block-button__link::after {
+  content: '‹';
+  margin-right: 0.75rem;
+  font-size: 1.2em;
+}
+
+.rahbar-finance__visual figure {
+  margin: 0;
+}
+
+.rahbar-finance__visual img {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+.rahbar-home-section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.rahbar-migration-placeholder {
+  min-height: 16rem;
+  padding: 2rem;
+  border: 1px dashed #b9a4cc;
+  border-radius: 16px;
+  background: #faf8fd;
+  color: var(--wp--preset--color--muted);
+  text-align: center;
+}
+
+.rahbar-migration-placeholder p {
+  margin-top: 5rem;
+}
+
+.rahbar-popular-questions {
+  background: #fff;
+}
+
+.rahbar-question-track {
+  display: grid;
+  grid-auto-columns: minmax(16rem, 1fr);
+  grid-auto-flow: column;
+  gap: 1rem;
+  padding-block: 0.75rem 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.rahbar-question-card {
+  min-height: 9.5rem;
+  padding: 1.25rem;
+  border: 1px solid #c8a9ed;
+  border-radius: 16px;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.rahbar-question-card__icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin: 0 0 0.75rem;
+  place-items: center;
+  border: 2px solid #d8c5ef;
+  border-radius: 50%;
+  color: var(--wp--preset--color--primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.rahbar-question-card h3 {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.rahbar-question-card a {
+  color: var(--wp--preset--color--primary);
+  font-size: 0.8rem;
+}
+
+.rahbar-latest-news {
+  background: #fff;
+}
+
+.rahbar-news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.rahbar-news-card {
+  min-height: 8.5rem;
+  padding: 1.1rem;
+  border: 1px solid #d9d9e3;
+  border-radius: 16px;
+  background: #f3f3fb;
+  box-shadow: 0 10px 25px -10px rgb(197 197 197 / 50%);
+}
+
+.rahbar-news-card figure {
+  flex: 0 0 4rem;
+  margin: 0;
+}
+
+.rahbar-news-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.rahbar-news-card p {
+  margin-bottom: 0;
+  color: var(--wp--preset--color--muted);
+  font-size: 0.78rem;
+}
+
+.rahbar-feature {
+  padding-block: clamp(3rem, 7vw, 6rem);
+  background: linear-gradient(100deg, #fff 0 42%, #ededed 100%);
+}
+
+.rahbar-feature__layout,
+.rahbar-instagram__layout {
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-block: 0;
+}
+
+.rahbar-feature h2 {
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  line-height: 1.8;
+}
+
+.rahbar-feature p {
+  line-height: 2;
+}
+
+.rahbar-feature img {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.rahbar-instagram {
+  padding-block: clamp(3rem, 6vw, 5rem) 0;
+  background: #fff;
+}
+
+.rahbar-instagram__panel {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 16px;
+  background: linear-gradient(110deg, #de4a17, #d00071);
+  color: #fff;
+}
+
+.rahbar-instagram__panel h2 {
+  margin-top: 0;
+}
+
+.rahbar-instagram__panel h3 {
+  font-size: 1rem;
+}
+
+.rahbar-instagram__panel p {
+  font-size: 0.85rem;
+}
+
+.rahbar-instagram figure {
+  margin: 0;
+}
+
+.rahbar-instagram img {
+  display: block;
+  max-height: 32rem;
+  object-fit: contain;
+}
+
+.rahbar-section-heading-row .rahbar-section-title {
+  margin: 0;
+}
+
+.rahbar-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.rahbar-review-grid figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.rahbar-review-grid figure::after {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: rgb(54 30 80 / 45%);
+  color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.rahbar-review-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.rahbar-partners {
+  padding-block: 1.25rem;
+  background: #f3effb;
+}
+
+.rahbar-partners__row {
+  gap: 2rem;
+}
+
+.rahbar-partners h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.rahbar-partners figure {
+  margin: 0;
+}
+
+.rahbar-partners img {
+  display: block;
+  max-height: 3.5rem;
+  object-fit: contain;
 }
 
 .rahbar-topbar a {
-	color: inherit;
+  color: inherit;
 }
 
 .rahbar-header-main,
 .rahbar-header-nav-row {
-	gap: clamp(0.75rem, 2vw, 1.5rem);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .rahbar-site-brand {
-	flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .rahbar-site-brand .wp-block-site-logo img {
-	max-height: 72px;
-	width: auto;
+  max-height: 72px;
+  width: auto;
 }
 
 .rahbar-header-search {
-	flex: 1 1 22rem;
-	max-width: 38rem;
+  flex: 1 1 22rem;
+  max-width: 38rem;
 }
 
 .rahbar-header-search .wp-block-search__inside-wrapper {
-	border: 1px solid var(--wp--preset--color--border);
-	border-radius: 999px;
-	box-shadow: var(--rahbar-shadow-sm);
-	overflow: hidden;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: 999px;
+  box-shadow: var(--rahbar-shadow-sm);
+  overflow: hidden;
 }
 
 .rahbar-header-search .wp-block-search__input {
-	min-width: 0;
-	border: 0;
+  min-width: 0;
+  border: 0;
 }
 
 .rahbar-header-search .wp-block-search__button {
-	border-radius: 999px;
+  border-radius: 999px;
 }
 
 .rahbar-header-contact,
 .rahbar-header-actions {
-	flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .rahbar-header-nav-row .wp-block-navigation {
-	flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .rahbar-header-actions {
-	gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .rahbar-header-actions .wp-block-button__link {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .rahbar-header-actions .is-style-outline .wp-block-button__link {
-	background: transparent;
-	color: var(--wp--preset--color--primary);
+  background: transparent;
+  color: var(--wp--preset--color--primary);
 }
 
 .rahbar-mobile-search {
-	display: none !important;
+  display: none !important;
+}
+
+.rahbar-footer {
+  padding-top: 1rem;
+  background: #eee8fb;
+  color: var(--wp--preset--color--primary-dark);
 }
 
 .rahbar-footer a {
-	color: var(--wp--preset--color--surface);
+  color: var(--wp--preset--color--primary-dark);
+}
+
+.rahbar-footer-top {
+  padding-block: 0.5rem 1rem;
+}
+
+.rahbar-footer-top p,
+.rahbar-footer-meta p {
+  margin: 0;
+}
+
+.rahbar-footer-columns {
+  padding-block: 2rem;
+}
+
+.rahbar-footer-columns h3 {
+  font-size: 1.15rem;
+}
+
+.rahbar-footer-columns p,
+.rahbar-footer-links {
+  font-size: 0.85rem;
+  line-height: 2;
+}
+
+.rahbar-footer-links {
+  padding: 0;
+  list-style: none;
 }
 
 .rahbar-footer .wp-block-navigation-item__content {
-	padding-block: 0.2rem;
+  padding-block: 0.2rem;
 }
 
 .rahbar-footer-meta {
-	border-top: 1px solid rgb(255 255 255 / 18%);
+  padding-block: 0.65rem;
+  background: var(--wp--preset--color--primary-dark);
+  color: #fff;
+}
+
+.rahbar-footer-meta .alignwide {
+  min-height: 2rem;
+}
+
+.rahbar-footer-trust {
+  padding-block: 1.25rem;
+  border-top: 1px solid #d5cbe7;
+}
+
+.rahbar-footer-promises {
+  gap: 0.75rem;
+}
+
+.rahbar-footer-promises p {
+  margin: 0;
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.75rem;
+}
+
+.rahbar-footer-licenses figure {
+  margin: 0;
+}
+
+.rahbar-footer-licenses img {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
 }
 
 .rahbar-product-page {
-	padding-block: clamp(2rem, 5vw, 4rem);
-	background: linear-gradient(to bottom, #fff 0 9rem, #f5f0fb 9rem 40rem, #fff 40rem);
+  padding-block: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(
+    to bottom,
+    #fff 0 9rem,
+    #f5f0fb 9rem 40rem,
+    #fff 40rem
+  );
 }
 
 .rahbar-product-title {
-	margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-	font-size: clamp(1.45rem, 2.5vw, 2rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
 }
 
 .rahbar-product-intro {
-	gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .rahbar-product-gallery-column .woocommerce-product-gallery,
 .rahbar-product-gallery-column img {
-	border-radius: var(--rahbar-radius-md);
+  border-radius: var(--rahbar-radius-md);
 }
 
 .rahbar-product-summary {
-	padding: clamp(1.25rem, 2.5vw, 2rem);
-	border-radius: var(--rahbar-radius-md);
-	background: var(--wp--preset--color--primary-dark);
-	color: var(--wp--preset--color--surface);
-	box-shadow: var(--rahbar-shadow-sm);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--rahbar-radius-md);
+  background: var(--wp--preset--color--primary-dark);
+  color: var(--wp--preset--color--surface);
+  box-shadow: var(--rahbar-shadow-sm);
 }
 
 .rahbar-product-summary .wp-block-post-excerpt__excerpt {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-product-summary ul {
-	margin-block: 0;
+  margin-block: 0;
 }
 
 .rahbar-product-access-notice {
-	margin-top: 1rem;
-	padding: 0.65rem 1rem;
-	border-radius: var(--rahbar-radius-sm);
-	background: var(--wp--preset--color--primary-soft);
+  margin-top: 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--rahbar-radius-sm);
+  background: var(--wp--preset--color--primary-soft);
 }
 
 .rahbar-product-access-notice p {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-product-info-icon {
-	display: grid;
-	width: 2rem;
-	height: 2rem;
-	flex: 0 0 auto;
-	place-items: center;
-	border-radius: 7px;
-	background: var(--wp--preset--color--surface);
-	color: var(--wp--preset--color--accent);
-	font-size: 1.35rem;
-	font-weight: 800;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--wp--preset--color--surface);
+  color: var(--wp--preset--color--accent);
+  font-size: 1.35rem;
+  font-weight: 800;
 }
 
 .rahbar-product-instructor {
-	justify-content: flex-start;
-	margin-top: 1rem;
+  justify-content: flex-start;
+  margin-top: 1rem;
 }
 
 .rahbar-product-instructor p {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-product-tabs {
-	margin-block: 1.5rem 3rem;
-	padding-block: 0.75rem;
-	border-bottom: 1px solid var(--wp--preset--color--border);
+  margin-block: 1.5rem 3rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--wp--preset--color--border);
 }
 
 .rahbar-product-tabs p {
-	margin: 0;
+  margin: 0;
 }
 
 .rahbar-product-tabs a {
-	display: block;
-	padding: 0.45rem 0.9rem;
-	border-radius: 9px;
-	background: var(--wp--preset--color--primary-soft);
-	text-decoration: none;
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9px;
+  background: var(--wp--preset--color--primary-soft);
+  text-decoration: none;
 }
 
 .rahbar-product-main {
-	align-items: flex-start !important;
-	gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: flex-start !important;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .rahbar-product-content {
-	padding: clamp(1.25rem, 2.5vw, 2rem);
-	border: 1px solid var(--wp--preset--color--border);
-	border-radius: var(--rahbar-radius-md);
-	background: var(--wp--preset--color--surface);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  background: var(--wp--preset--color--surface);
 }
 
 .rahbar-purchase-card {
-	position: sticky;
-	top: 1rem;
-	padding: 1.25rem;
-	border: 1px solid #d7cedf;
-	border-radius: var(--rahbar-radius-md);
-	background: var(--wp--preset--color--surface);
-	box-shadow: var(--rahbar-shadow-sm);
+  position: sticky;
+  top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #d7cedf;
+  border-radius: var(--rahbar-radius-md);
+  background: var(--wp--preset--color--surface);
+  box-shadow: var(--rahbar-shadow-sm);
 }
 
 .rahbar-purchase-card .wp-block-woocommerce-product-price {
-	padding-block: 1rem;
-	border-block: 1px dashed var(--wp--preset--color--border);
+  padding-block: 1rem;
+  border-block: 1px dashed var(--wp--preset--color--border);
 }
 
 .rahbar-purchase-card .wc-block-components-product-price__regular {
-	color: var(--wp--preset--color--muted);
+  color: var(--wp--preset--color--muted);
 }
 
 .rahbar-purchase-card .single_add_to_cart_button,
 .rahbar-purchase-card .wp-element-button {
-	width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 960px) {
-	.rahbar-benefits-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
+  .rahbar-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-	.rahbar-header-actions {
-		display: none;
-	}
+  .rahbar-benefit-card:nth-child(even) {
+    margin-top: 0;
+  }
 
-	.rahbar-header-nav-row .wp-block-navigation__responsive-container-open {
-		display: flex !important;
-	}
+  .rahbar-header-actions {
+    display: none;
+  }
 
-	.rahbar-header-nav-row .wp-block-navigation__responsive-container:not(.is-menu-open) {
-		display: none !important;
-	}
+  .rahbar-news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rahbar-header-nav-row .wp-block-navigation__responsive-container-open {
+    display: flex !important;
+  }
+
+  .rahbar-header-nav-row
+    .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: none !important;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 960px) {
-	.rahbar-legacy-hero__layout {
-		flex-wrap: nowrap !important;
-		min-height: 36rem;
-	}
+  .rahbar-legacy-hero__layout {
+    flex-wrap: nowrap !important;
+    min-height: 36rem;
+  }
 
-	.rahbar-legacy-hero__card {
-		padding: 2rem;
-	}
+  .rahbar-legacy-hero__card {
+    padding: 2rem;
+  }
 
-	.rahbar-legacy-hero__title {
-		font-size: clamp(1.35rem, 3.2vw, 1.75rem);
-	}
+  .rahbar-legacy-hero__title {
+    font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  }
 
-	.rahbar-legacy-hero__image img {
-		width: min(100%, 20rem);
-	}
+  .rahbar-legacy-hero__image img {
+    width: min(100%, 20rem);
+  }
 }
 
 @media (max-width: 781px) {
-	.rahbar-topbar .wp-block-group,
-	.rahbar-header-main,
-	.rahbar-header-nav-row {
-		flex-wrap: nowrap;
-	}
+  .rahbar-topbar .wp-block-group,
+  .rahbar-header-main,
+  .rahbar-header-nav-row {
+    flex-wrap: nowrap;
+  }
 
-	.rahbar-header-main {
-		justify-content: space-between;
-	}
+  .rahbar-header-main {
+    justify-content: space-between;
+  }
 
-	.rahbar-footer-columns {
-		gap: 2rem;
-	}
+  .rahbar-footer-columns {
+    gap: 2rem;
+  }
 
-	.rahbar-product-main {
-		flex-wrap: wrap !important;
-	}
+  .rahbar-product-main {
+    flex-wrap: wrap !important;
+  }
 
-	.rahbar-product-content,
-	.rahbar-purchase-column {
-		flex-basis: 100% !important;
-	}
+  .rahbar-finance__layout {
+    flex-direction: column;
+  }
 
-	.rahbar-purchase-column {
-		order: -1;
-	}
+  .rahbar-feature__layout,
+  .rahbar-instagram__layout {
+    flex-direction: column;
+  }
 
-	.rahbar-purchase-card {
-		position: static;
-	}
+  .rahbar-feature__layout > .wp-block-column,
+  .rahbar-instagram__layout > .wp-block-column {
+    width: 100%;
+    flex-basis: 100% !important;
+  }
+
+  .rahbar-finance__layout > .wp-block-column {
+    width: 100%;
+    flex-basis: 100% !important;
+  }
+
+  .rahbar-finance__visual {
+    order: -1;
+  }
+
+  .rahbar-product-content,
+  .rahbar-purchase-column {
+    flex-basis: 100% !important;
+  }
+
+  .rahbar-purchase-column {
+    order: -1;
+  }
+
+  .rahbar-purchase-card {
+    position: static;
+  }
 }
 
 @media (max-width: 600px) {
-	.wp-site-blocks {
-		padding-bottom: 6.5rem;
-	}
+  .wp-site-blocks {
+    padding-bottom: 6.5rem;
+  }
 
-	.rahbar-benefits-grid {
-		grid-template-columns: minmax(0, 1fr);
-	}
+  .rahbar-benefits-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-	.rahbar-legacy-header {
-		padding-block: 0.75rem;
-	}
+  .rahbar-news-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-	.rahbar-header-main {
-		position: relative;
-		justify-content: center;
-		min-height: 5.5rem;
-	}
+  .rahbar-review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-	.rahbar-header-search,
-	.rahbar-header-contact,
-	.rahbar-header-nav {
-		display: none !important;
-	}
+  .rahbar-section-heading-row {
+    align-items: center;
+  }
 
-	.rahbar-mobile-actions {
-		position: absolute;
-		inset-inline-end: 0;
-		display: flex;
-		gap: 0.4rem;
-	}
+  .rahbar-partners__row {
+    justify-content: center;
+  }
 
-	.rahbar-legacy-logo img {
-		width: 76px !important;
-	}
+  .rahbar-legacy-header {
+    padding-block: 0.75rem;
+  }
 
-	.rahbar-legacy-hero {
-		padding-top: 1.25rem;
-		background-position: 50% 40%;
-		background-size: 52rem auto;
-	}
+  .rahbar-header-main {
+    position: relative;
+    justify-content: center;
+    min-height: 5.5rem;
+  }
 
-	.rahbar-legacy-hero__layout {
-		min-height: 0;
-		gap: 0;
-	}
+  .rahbar-header-search,
+  .rahbar-header-contact,
+  .rahbar-header-nav {
+    display: none !important;
+  }
 
-	.rahbar-legacy-hero__card {
-		padding: 1.25rem 1.25rem 2rem;
-		border-radius: 16px;
-	}
+  .rahbar-mobile-actions {
+    position: absolute;
+    inset-inline-end: 0;
+    display: flex;
+    gap: 0.4rem;
+  }
 
-	.rahbar-legacy-hero__card::after {
-		display: none;
-	}
+  .rahbar-legacy-logo img {
+    width: 76px !important;
+  }
 
-	.rahbar-legacy-hero__title {
-		font-size: clamp(1.35rem, 7vw, 1.75rem);
-	}
+  .rahbar-legacy-hero {
+    padding-top: 1.25rem;
+    background-position: 50% 40%;
+    background-size: 52rem auto;
+  }
 
-	.rahbar-legacy-hero__visual {
-		margin-top: 0 !important;
-	}
+  .rahbar-legacy-hero__layout {
+    min-height: 0;
+    gap: 0;
+  }
 
-	.rahbar-legacy-hero__image img {
-		width: min(100%, 22rem);
-	}
+  .rahbar-legacy-hero__layout > .wp-block-column {
+    width: 100%;
+    max-width: 100%;
+    flex-basis: 100% !important;
+  }
 
-	.rahbar-product-page {
-		padding-top: 1.5rem;
-		background: linear-gradient(to bottom, #fff 0 7rem, #f5f0fb 7rem 54rem, #fff 54rem);
-	}
+  .rahbar-legacy-hero__card {
+    padding: 1.25rem 1.25rem 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: calc(100vw - 2.5rem);
+  }
 
-	.rahbar-product-title {
-		width: 100%;
-		max-width: 100%;
-		margin-inline: 0;
-		font-size: 1.15rem;
-		line-height: 1.6;
-		overflow-wrap: anywhere;
-	}
+  .rahbar-legacy-hero__card::after {
+    display: none;
+  }
 
-	.rahbar-product-gallery-column .wc-block-components-product-sale-badge {
-		right: 0.75rem;
-	}
+  .rahbar-legacy-hero__title {
+    font-size: 1.35rem;
+    line-height: 1.75;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
 
-	.rahbar-product-intro {
-		gap: 1rem;
-	}
+  .rahbar-legacy-hero__eyebrow {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
 
-	.rahbar-product-gallery-column {
-		order: -1;
-	}
+  .rahbar-legacy-hero__summary {
+    font-size: 0.8rem;
+    line-height: 1.9;
+  }
 
-	.rahbar-product-summary,
-	.rahbar-product-content,
-	.rahbar-purchase-card {
-		padding: 1rem;
-	}
+  .rahbar-legacy-hero__visual {
+    margin-top: 0 !important;
+  }
 
-	.rahbar-purchase-column {
-		position: fixed;
-		z-index: 100;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: auto !important;
-		min-height: 0;
-		padding: 0.65rem max(1rem, env(safe-area-inset-right)) max(0.65rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
-		background: rgb(255 255 255 / 96%);
-		box-shadow: 0 -8px 30px rgb(54 30 80 / 16%);
-	}
+  .rahbar-legacy-hero__image img {
+    width: min(100%, 22rem);
+  }
 
-	.rahbar-purchase-card {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(9rem, 1.25fr);
-		gap: 0.75rem;
-		align-items: center;
-		max-width: 34rem;
-		margin: 0 auto;
-		border: 0;
-		box-shadow: none;
-		min-height: 0;
-	}
+  .rahbar-product-page {
+    padding-top: 1.5rem;
+    background: linear-gradient(
+      to bottom,
+      #fff 0 7rem,
+      #f5f0fb 7rem 54rem,
+      #fff 54rem
+    );
+  }
 
-	.rahbar-purchase-card > h2,
-	.rahbar-purchase-card > .wp-block-woocommerce-product-sale-badge,
-	.rahbar-purchase-card > .wp-block-woocommerce-product-stock-indicator,
-	.rahbar-purchase-card > .wp-block-separator,
-	.rahbar-purchase-card > .wp-block-woocommerce-product-meta {
-		display: none;
-	}
+  .rahbar-product-title {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
 
-	.rahbar-purchase-card .wp-block-woocommerce-product-price {
-		padding: 0;
-		border: 0;
-		font-size: 0.9rem !important;
-	}
+  .rahbar-product-gallery-column .wc-block-components-product-sale-badge {
+    right: 0.75rem;
+  }
 
-	.rahbar-purchase-card .wp-block-add-to-cart-form {
-		margin: 0;
-	}
+  .rahbar-product-intro {
+    gap: 1rem;
+  }
 
-	.rahbar-purchase-card form.cart {
-		display: flex;
-		margin: 0 !important;
-	}
+  .rahbar-product-gallery-column {
+    order: -1;
+  }
 
-	.rahbar-purchase-card .quantity {
-		display: none !important;
-	}
+  .rahbar-product-summary,
+  .rahbar-product-content,
+  .rahbar-purchase-card {
+    padding: 1rem;
+  }
 
-	.rahbar-purchase-card .single_add_to_cart_button {
-		min-height: 3rem;
-		padding: 0.65rem 0.75rem;
-		font-size: 0.85rem;
-	}
+  .rahbar-purchase-column {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    padding: 0.65rem max(1rem, env(safe-area-inset-right))
+      max(0.65rem, env(safe-area-inset-bottom))
+      max(1rem, env(safe-area-inset-left));
+    background: rgb(255 255 255 / 96%);
+    box-shadow: 0 -8px 30px rgb(54 30 80 / 16%);
+  }
 
-	.rahbar-product-tabs {
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
-	}
+  .rahbar-purchase-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(9rem, 1.25fr);
+    gap: 0.75rem;
+    align-items: center;
+    max-width: 34rem;
+    margin: 0 auto;
+    border: 0;
+    box-shadow: none;
+    min-height: 0;
+  }
 
-	.rahbar-topbar {
-		font-size: 0.8125rem;
-	}
+  .rahbar-purchase-card > h2,
+  .rahbar-purchase-card > .wp-block-woocommerce-product-sale-badge,
+  .rahbar-purchase-card > .wp-block-woocommerce-product-stock-indicator,
+  .rahbar-purchase-card > .wp-block-separator,
+  .rahbar-purchase-card > .wp-block-woocommerce-product-meta {
+    display: none;
+  }
 
-	.rahbar-topbar .wp-block-button__link {
-		padding: 0.5rem 0.75rem;
-	}
+  .rahbar-purchase-card .wp-block-woocommerce-product-price {
+    padding: 0;
+    border: 0;
+    font-size: 0.9rem !important;
+  }
 
+  .rahbar-purchase-card .wp-block-add-to-cart-form {
+    margin: 0;
+  }
+
+  .rahbar-purchase-card form.cart {
+    display: flex;
+    margin: 0 !important;
+  }
+
+  .rahbar-purchase-card .quantity {
+    display: none !important;
+  }
+
+  .rahbar-purchase-card .single_add_to_cart_button {
+    min-height: 3rem;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .rahbar-product-tabs {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rahbar-topbar {
+    font-size: 0.8125rem;
+  }
+
+  .rahbar-topbar .wp-block-button__link {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+  html {
+    scroll-behavior: auto;
+  }
 
-	*,
-	*::before,
-	*::after {
-		scroll-behavior: auto !important;
-		transition-duration: 0.01ms !important;
-	}
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

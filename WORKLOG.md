@@ -216,3 +216,29 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - metadata ده Code Snippet بدون خواندن/اجرای متن کد بررسی شد؛ دو shortcode فعال و هشت snippet غیرفعال شناسایی شدند.
 - کد دامنه‌ای پراکنده در Hello Elementor، MU-pluginها، SpotPlayer، SMS و payment با static scan در `docs/baseline/legacy-custom-code-inventory.md` ثبت شد.
 - checkpoint: `INV-CODE-001` تکمیل؛ اقدام بعدی `INV-DATA-001` و شمارش entity و metaهای سفارشی Legacy به‌صورت read-only است.
+
+### 2026-08-19 — `home-section-parity-reassessment`
+
+- پذیرش قبلی `UI-HOME-PAR-001` پس گرفته شد؛ baseline قبلی فقط viewport اولیه را پوشش می‌داد و شباهت کافی نبود.
+- screenshot بلند 1440×10000 از Legacy ثبت و ترتیب کامل سکشن‌های Home استخراج شد.
+- تعداد واقعی کارت‌های مزیت از چهار به پنج اصلاح و متن‌های واقعی Legacy وارد شد.
+- Header و Hero در desktop/mobile دوباره با مرجع تصویری تنظیم شدند.
+- بلوک‌های عمومی و نامرتبط Services/CTA از Home حذف و سکشن «جدیدترین دوره‌های ما» با Query واقعی محصولات WooCommerce اضافه شد.
+- checkpoint: سه بخش ابتدایی در pass تطبیق سکشن‌به‌سکشن هستند؛ اقدام بعدی تکمیل کارت دوره‌ها و سپس سکشن «راهبر مالی» است.
+
+### 2026-08-19 — `home-section-parity-body-pass`
+
+- ترتیب کامل بدنه Home از screenshot بلند و Elementor metadata به‌صورت read-only استخراج شد.
+- سکشن‌های جدیدترین دوره‌ها، راهبر مالی، آموزش رایگان، سؤال‌های پرتکرار، اخبار و بخشنامه‌ها، ایزی اینویس، اینستاگرام، منتورما، تجربه دانشجویان و همکاران ساخته شدند.
+- assetهای هر سکشن به‌صورت انتخابی از Legacy ارزیابی و در قالب Rebuild کپی شدند؛ هیچ plugin/theme یا مجموعه uploads به‌صورت دسته‌جمعی منتقل نشد.
+- Query دوره‌ها فقط داده واقعی WooCommerce مقصد را نمایش می‌دهد؛ به‌دلیل نبود داده مهاجرت‌شده، آموزش رایگان empty-state صریح دارد و محصول جعلی ساخته نشد.
+- HTTP 200، asset probes، Compose config و نبود PHP fatal/warning بررسی شد.
+- checkpoint: بدنه Home تا پیش از Footer پیاده شده؛ اقدام بعدی visual regression کامل desktop/tablet/mobile و سپس parity دقیق Footer است.
+
+### 2026-08-19 — `home-footer-parity-pass`
+
+- Footer تیره و کوتاه prototype با ساختار روشن و چندردیفه نزدیک به Legacy جایگزین شد.
+- معرفی مؤسسه، دسترسی سریع، لینک‌های مرتبط، اطلاعات تماس، promise cardها، سه مجوز واقعی و نوار کپی‌رایت اضافه شدند.
+- assetهای مجوز به‌صورت انتخابی از Footer Legacy منتقل و با HTTP 200 تأیید شدند.
+- baseline بلند Rebuild پس از تکمیل بدنه و Footer دوباره تولید شد.
+- checkpoint: ساختار کامل Home از Header تا Footer موجود است؛ `UI-HOME-PAR-001` تا پایان بازبینی و اصلاح desktop/tablet/mobile همچنان DOING است.

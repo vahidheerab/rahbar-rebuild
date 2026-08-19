@@ -104,7 +104,7 @@
 - [ ] 6.13 `A11Y-SR-001` label، landmark، heading، alt و announcement خطا را با screen reader بررسی کن
 - [ ] 6.14 `A11Y-CON-001` contrast، zoom 200% و prefers-reduced-motion را بررسی کن
 - [x] 6.15 `UI-HOME-BEN-001` Benefits چهارگانه Home را با layout چهار/دو/یک ستونه پیاده‌سازی و smoke test کن — Evidence: theme `rahbar` v0.3.0، سه screenshot full-page و گزارش `docs/baseline/rebuild-home-benefits-smoke-test.md`، 2026-08-18
-- [x] 6.16 `UI-HOME-PAR-001` بخش visible صفحه Home را با screenshotهای Legacy در desktop/tablet/mobile تطبیق بده — Evidence: theme `rahbar` v0.4.0، assetهای واقعی Legacy، سه screenshot و گزارش `docs/baseline/rebuild-home-visual-parity-report.md`، 2026-08-18
+- [ ] 6.16 `UI-HOME-PAR-001` صفحه Home را سکشن‌به‌سکشن با Legacy در desktop/tablet/mobile تطبیق بده — DOING: ارزیابی مجدد مالک نشان داد baseline قبلی فقط viewport اولیه را پوشش می‌دهد و شباهت بصری کافی نیست؛ Header، Hero و Benefits در حال بازبینی‌اند، 2026-08-19
 - [ ] 6.17 `GATE-UI` همه templateهای must-have و معیارهای accessibility مصوب قبول باشند
 
 ## 7. کاربران، احراز هویت و حریم خصوصی
