@@ -127,7 +127,7 @@
 - [ ] 8.2 `WC-PROD-001` محصول simple، variable، virtual و downloadable را تست کن
 - [ ] 8.3 `WC-PRICE-001` قیمت عادی/فروش، مالیات، rounding و نمایش تومان/ریال را تست کن
 - [ ] 8.4 `WC-STOCK-001` موجودی، backorder، out-of-stock و concurrency آخرین موجودی را تست کن
-- [ ] 8.5 `WC-CART-001` add/update/remove cart، persistence و mini-cart را تست کن
+- [x] 8.5 `WC-CART-001` add/update/remove cart، persistence و mini-cart را تست کن — add/persistence/remove پاس شد؛ update تعداد برای دوره‌های sold-individually عمداً غیرفعال است، Evidence: `docs/baseline/rebuild-commerce-flow-report.md`، 2026-08-22
 - [ ] 8.6 `WC-COUP-001` coupon معتبر، منقضی، محدودیت کاربر/محصول و stacking را تست کن
 - [ ] 8.7 `WC-CHK-001` checkout مهمان/عضو، validation آدرس و terms consent را تست کن
 - [ ] 8.8 `WC-SHIP-001` روش و هزینه حمل برای سناریوهای مصوب را تست کن

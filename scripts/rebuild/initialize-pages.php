@@ -105,6 +105,16 @@ update_option( 'permalink_structure', '/%postname%/' );
 update_option( 'timezone_string', 'Asia/Tehran' );
 update_option( 'WPLANG', 'fa_IR' );
 
+// Course purchases must belong to a customer account so payment and course
+// entitlement can be reconciled safely during cutover.
+update_option( 'woocommerce_default_country', 'IR' );
+update_option( 'woocommerce_allowed_countries', 'specific' );
+update_option( 'woocommerce_specific_allowed_countries', array( 'IR' ) );
+update_option( 'woocommerce_currency', 'IRT' );
+update_option( 'woocommerce_enable_guest_checkout', 'no' );
+update_option( 'woocommerce_enable_signup_and_login_from_checkout', 'yes' );
+update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
+
 $blog_page = get_page_by_path( 'blog', OBJECT, 'page' );
 $home_page = get_page_by_path( 'home', OBJECT, 'page' );
 if ( ! $home_page instanceof WP_Post ) {

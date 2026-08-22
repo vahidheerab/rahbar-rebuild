@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 1.4.0
+Version: 1.5.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -122,6 +122,51 @@ select {
 
 .rahbar-page-content {
   min-height: 12rem;
+}
+
+.rahbar-commerce-page {
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.rahbar-commerce-page .rahbar-page-hero {
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.rahbar-commerce-content {
+  min-height: 22rem;
+}
+
+.rahbar-commerce-content .wc-block-cart,
+.rahbar-commerce-content .wc-block-checkout,
+.rahbar-commerce-content .woocommerce {
+  font-family: inherit;
+}
+
+.rahbar-commerce-content .wc-block-components-sidebar-layout,
+.rahbar-commerce-content .woocommerce-form-login {
+  gap: clamp(1.25rem, 3vw, 3rem);
+}
+
+.rahbar-commerce-content .wc-block-components-totals-wrapper,
+.rahbar-commerce-content .wc-block-components-order-summary,
+.rahbar-commerce-content .woocommerce-form-login {
+  border-color: var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+}
+
+.rahbar-commerce-content .wc-block-components-button,
+.rahbar-commerce-content .woocommerce-button,
+.rahbar-commerce-content button.button {
+  border-radius: 0.7rem;
+  font-family: inherit;
+  font-weight: 800;
+}
+
+.rahbar-commerce-content input,
+.rahbar-commerce-content select,
+.rahbar-commerce-content textarea {
+  border-radius: 0.55rem;
+  font-family: inherit;
 }
 
 .rahbar-contact-grid {

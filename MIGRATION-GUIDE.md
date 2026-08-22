@@ -147,6 +147,16 @@ docker compose -f rebuild/compose.yaml ps
 
 ## 9. Cutover
 
+پیش از smoke test فروشگاه، ترجمه و تنظیمات نسخه‌شده rebuild را اعمال کنید:
+
+```powershell
+.\scripts\rebuild\Install-WooCommerceTranslations.ps1
+.\scripts\rebuild\Initialize-RebuildPages.ps1 -Confirm:$false
+npm run test:commerce
+```
+
+خروجی باید کشور ایران، ارز IRT، خرید مهمان غیرفعال و ثبت‌نام حساب در checkout را حفظ کند. این تنظیم مانع ایجاد سفارش دوره بدون حساب و entitlement قابل تطبیق می‌شود.
+
 1. TTL دامنه را از قبل کاهش دهید و maintenance window/مسئول rollback را تعیین کنید.
 2. legacy را read-only کنید و زمان freeze را ثبت کنید.
 3. dump نهایی از دیتابیس زنده production و media delta بگیرید؛ checksum، high-water mark و شمارش‌ها را تأیید کنید. snapshot محیط توسعه منبع Cutover نیست.

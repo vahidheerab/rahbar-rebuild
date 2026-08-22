@@ -370,3 +370,12 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - نتیجه نهایی همه مسیرها بدون violation جدی/بحرانی بود؛ تست دستی کوتاه NVDA/VoiceOver در pre-launch حفظ شد.
 - نسخه قالب Rahbar به `1.4.0` رسید؛ Evidence: `docs/baseline/rebuild-accessibility-report.md`.
 - checkpoint: `A11Y-KBD-001`، `A11Y-SR-001` و `A11Y-CON-001` تکمیل؛ اقدام بعدی browser matrix و سپس فرم/مسیرهای commerce است.
+
+### 2026-08-22 — `commerce-public-flow`
+
+- قالب اختصاصی دارای header/footer برای Cart، Checkout و My Account اضافه شد و نسخه قالب به `1.5.0` رسید.
+- بسته رسمی ترجمه فارسی WooCommerce 11.0.1 با checksum ثابت نصب و اسکریپت تکرارپذیر نصب آن ثبت شد.
+- کشور پایه/فروش ایران و ارز IRT تثبیت شد؛ خرید مهمان برای جلوگیری از سفارش بدون حساب غیرفعال و ثبت‌نام حساب فعال شد.
+- تست واقعی add/persistence/remove cart، validation تسویه‌حساب و فرم ورود با Playwright پاس شد (`3 passed`).
+- هیچ سفارش یا پرداختی ایجاد نشد؛ درگاه sandbox و قرارداد اتصال entitlement هنوز باقی است.
+- Evidence: `docs/baseline/rebuild-commerce-flow-report.md` و سه screenshot صفحه‌های Commerce.

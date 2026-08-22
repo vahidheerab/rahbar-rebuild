@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "test:responsive": "playwright test scripts/rebuild/responsive.spec.js --reporter=line",
-    "test:accessibility": "playwright test scripts/rebuild/accessibility.spec.js --reporter=line"
+    "test:accessibility": "playwright test scripts/rebuild/accessibility.spec.js --reporter=line",
+    "test:commerce": "playwright test scripts/rebuild/commerce.spec.js --reporter=line"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
