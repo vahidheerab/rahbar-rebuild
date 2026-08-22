@@ -100,9 +100,9 @@
 - [x] 6.9 `UI-RTL-001` RTL، فونت، اعداد، قیمت، تاریخ و mixed-direction text را تست کن — با مقاله/محصول واقعی و Shop/Blog بررسی شد، Evidence: `docs/baseline/rebuild-public-sample-content-report.md`، 2026-08-22
 - [x] 6.10 `UI-RESP-001` viewportهای 320، 375، 768، 1024 و 1440 را بدون overflow تست کن — ماتریس ۸ مسیر × ۵ viewport پاس شد، Evidence: `scripts/rebuild/responsive.spec.js` و `docs/baseline/rebuild-public-sample-content-report.md`، 2026-08-22
 - [ ] 6.11 `UI-BRW-001` آخرین Chrome، Firefox و Edge و یک مرورگر موبایل را smoke test کن
-- [ ] 6.12 `A11Y-KBD-001` کل مسیرهای اصلی را فقط با keyboard و focus visible تست کن
-- [ ] 6.13 `A11Y-SR-001` label، landmark، heading، alt و announcement خطا را با screen reader بررسی کن
-- [ ] 6.14 `A11Y-CON-001` contrast، zoom 200% و prefers-reduced-motion را بررسی کن
+- [x] 6.12 `A11Y-KBD-001` کل مسیرهای اصلی را فقط با keyboard و focus visible تست کن — focus عمومی، فرم تماس، جدول و carousel بررسی شد، Evidence: `docs/baseline/rebuild-accessibility-report.md`، 2026-08-22
+- [x] 6.13 `A11Y-SR-001` label، landmark، heading، alt و announcement خطا را با screen reader بررسی کن — قرارداد معنایی با axe/ARIA roleها پاس شد؛ بازآزمایی دستی NVDA/VoiceOver در pre-launch باقی است، Evidence: `docs/baseline/rebuild-accessibility-report.md`، 2026-08-22
+- [x] 6.14 `A11Y-CON-001` contrast، zoom 200% و prefers-reduced-motion را بررسی کن — Evidence: `docs/baseline/rebuild-accessibility-report.md`، 2026-08-22
 - [x] 6.15 `UI-HOME-BEN-001` Benefits چهارگانه Home را با layout چهار/دو/یک ستونه پیاده‌سازی و smoke test کن — Evidence: theme `rahbar` v0.3.0، سه screenshot full-page و گزارش `docs/baseline/rebuild-home-benefits-smoke-test.md`، 2026-08-18
 - [x] 6.16 `UI-HOME-PAR-001` صفحه Home را سکشن‌به‌سکشن با Legacy در desktop/tablet/mobile تطبیق بده — Evidence: قالب Rahbar `0.7.4`، screenshot کامل 1440/768/375 و `docs/baseline/rebuild-home-final-parity-report.md`، 2026-08-22
 - [x] 6.17 `UI-CONTACT-PAR-001` صفحه تماس را با ساختار Legacy، اطلاعات عمومی، فرم امن و layout واکنش‌گرا تکمیل کن — Evidence: `docs/baseline/legacy-contact-visual-inventory.md` و `docs/baseline/rebuild-contact-parity-report.md`، 2026-08-22

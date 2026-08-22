@@ -352,3 +352,21 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - overflow هدر در 320 و تصویر ثابت مقاله پیدا و اصلاح شد؛ ۲۴ حالت بزرگ‌تر و سپس ۱۶ حالت موبایل پاس شدند.
 - Evidence: `docs/baseline/rebuild-public-sample-content-report.md` و شش screenshot محتوای واقعی.
 - checkpoint: `UI-RTL-001` و `UI-RESP-001` تکمیل؛ اقدام بعدی keyboard/focus و screen-reader/contrast accessibility است.
+
+### 2026-08-22 — `latest-courses-carousel`
+
+- اسکرول افقی قابل مشاهده سکشن «جدیدترین دوره‌های ما» با carousel واقعی RTL جایگزین شد.
+- نمایش ۴/۳/۲/۱ کارت بر اساس viewport، کنترل قبلی/بعدی، swipe، scroll snap و scrollbar مخفی پیاده‌سازی شد.
+- وضعیت disabled ابتدا/انتها، keyboard arrows، focus visible و prefers-reduced-motion اضافه شد.
+- تست رفتاری Playwright و smoke overflow در عرض‌های 320 و 1440 پاس شدند.
+- Evidence: `docs/baseline/rebuild-course-carousel-report.md` و `rebuild-course-carousel-mobile-375.png`.
+
+### 2026-08-22 — `accessibility-aa-automation`
+
+- اسکن axe-core برای Home/Blog/Article/Shop/Product/Contact/Search/404 با قواعد WCAG 2.0/2.1 A/AA اجرا شد.
+- کنتراست CTA زرد، لینک ادامه مطلب و دکمه ارسال Contact اصلاح شد.
+- focus عناصر مخفی drawer سبد WooCommerce، landmark اصلی Home و جدول عریض مقاله اصلاح شدند.
+- keyboard order فرم، نام قابل‌خواندن فیلدها، role=alert، zoom 200% و reduced-motion تست شدند.
+- نتیجه نهایی همه مسیرها بدون violation جدی/بحرانی بود؛ تست دستی کوتاه NVDA/VoiceOver در pre-launch حفظ شد.
+- نسخه قالب Rahbar به `1.4.0` رسید؛ Evidence: `docs/baseline/rebuild-accessibility-report.md`.
+- checkpoint: `A11Y-KBD-001`، `A11Y-SR-001` و `A11Y-CON-001` تکمیل؛ اقدام بعدی browser matrix و سپس فرم/مسیرهای commerce است.

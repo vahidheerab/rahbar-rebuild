@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 1.2.0
+Version: 1.4.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -23,6 +23,16 @@ html {
   scroll-behavior: smooth;
   max-width: 100%;
   overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--wp--preset--color--accent);
+  outline-offset: 3px;
 }
 
 *,
@@ -311,7 +321,7 @@ select {
   border: 0;
   border-radius: 10px;
   background: var(--wp--preset--color--accent);
-  color: #fff;
+  color: var(--wp--preset--color--primary-dark);
   cursor: pointer;
   font: inherit;
   font-weight: 800;
@@ -371,6 +381,7 @@ select {
 
 .rahbar-blog-card h2 a { color: var(--wp--preset--color--primary); text-decoration: none; }
 .rahbar-blog-card .wp-block-post-excerpt__more-link { color: var(--wp--preset--color--accent); font-weight: 800; }
+.rahbar-blog-card .wp-block-post-excerpt__more-link { color: var(--wp--preset--color--primary); }
 
 .rahbar-blog-hero {
   margin-bottom: 3rem;
@@ -438,6 +449,10 @@ select {
 .rahbar-search-result__meta { color: var(--wp--preset--color--muted); font-size: 0.82rem; }
 .rahbar-search-empty { padding-block: 3rem 5rem; text-align: center; }
 .rahbar-search-empty__icon { margin: 0; color: var(--wp--preset--color--accent); font-size: 5rem; line-height: 1; }
+.rahbar-search-empty__icon { color: #7b5000; }
+
+.has-accent-background-color.has-surface-color,
+.wp-block-button__link.has-accent-background-color { color: var(--wp--preset--color--primary-dark) !important; }
 
 .rahbar-404-page {
   display: grid;
@@ -771,16 +786,57 @@ select {
 }
 
 .rahbar-course-track {
-  display: grid !important;
-  grid-auto-columns: minmax(16rem, 18rem);
-  grid-auto-flow: column;
-  grid-template-columns: none !important;
+  --rahbar-course-visible: 4;
+  display: flex !important;
   gap: 1.25rem;
-  padding: 0.5rem 0 1.5rem;
+  padding: 0.5rem 0 1.25rem;
   overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scrollbar-color: var(--wp--preset--color--primary-soft) transparent;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
 }
+
+.rahbar-course-track > li {
+  flex: 0 0 calc((100% - ((var(--rahbar-course-visible) - 1) * 1.25rem)) / var(--rahbar-course-visible));
+  scroll-snap-align: start;
+}
+
+.rahbar-course-track::-webkit-scrollbar { display: none; }
+
+.rahbar-course-carousel__controls {
+  position: relative;
+  z-index: 2;
+  display: none;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: -4rem;
+  margin-bottom: 1.25rem;
+}
+
+.has-course-carousel .rahbar-course-carousel__controls:not([hidden]) { display: flex; }
+
+.rahbar-course-carousel__controls button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--wp--preset--color--primary);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--wp--preset--color--primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.25rem;
+  place-items: center;
+  transition: background 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+
+.rahbar-course-carousel__controls button:hover,
+.rahbar-course-carousel__controls button:focus-visible { background: var(--wp--preset--color--primary); color: #fff; }
+.rahbar-course-carousel__controls button:focus-visible { outline: 3px solid var(--wp--preset--color--accent); outline-offset: 2px; }
+.rahbar-course-carousel__controls button:disabled { cursor: default; opacity: 0.35; }
 
 .rahbar-course-card {
   min-height: 31rem;
@@ -1396,6 +1452,7 @@ select {
 }
 
 @media (max-width: 960px) {
+  .rahbar-course-track { --rahbar-course-visible: 3; }
   .rahbar-benefits-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1447,6 +1504,7 @@ select {
 }
 
 @media (max-width: 781px) {
+  .rahbar-course-track { --rahbar-course-visible: 2; }
   .rahbar-topbar .wp-block-group,
   .rahbar-header-main,
   .rahbar-header-nav-row {
@@ -1504,6 +1562,8 @@ select {
 }
 
 @media (max-width: 600px) {
+  .rahbar-course-track { --rahbar-course-visible: 1; }
+  .rahbar-course-carousel__controls { margin-top: -3.75rem; }
   .wp-site-blocks {
     padding-bottom: 6.5rem;
   }

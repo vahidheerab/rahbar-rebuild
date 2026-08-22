@@ -36,3 +36,26 @@ for (const viewport of viewports) {
     });
   }
 }
+
+test('latest courses works as an RTL carousel', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  const response = await page.goto('http://localhost:8082/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+  expect(response.status()).toBe(200);
+  const track = page.locator('.rahbar-course-track');
+  const previous = page.locator('[data-course-carousel="previous"]');
+  const next = page.locator('[data-course-carousel="next"]');
+  await expect(track).toBeVisible();
+  const carouselMetrics = await track.evaluate((element) => ({ clientWidth: element.clientWidth, scrollWidth: element.scrollWidth, children: element.children.length, display: getComputedStyle(element).display, gridAutoColumns: getComputedStyle(element).gridAutoColumns }));
+  expect(carouselMetrics.scrollWidth, JSON.stringify(carouselMetrics)).toBeGreaterThan(carouselMetrics.clientWidth);
+  await expect(previous).toBeDisabled();
+  await expect(next).toBeEnabled();
+  expect(await track.evaluate((element) => getComputedStyle(element).scrollbarWidth)).toBe('none');
+  const start = await track.evaluate((element) => element.scrollLeft);
+  await next.click();
+  await page.waitForTimeout(700);
+  const moved = await track.evaluate((element) => element.scrollLeft);
+  expect(moved).toBeLessThan(start);
+  await track.press('ArrowRight');
+  await page.waitForTimeout(700);
+  expect(await track.evaluate((element) => Math.abs(element.scrollLeft))).toBeLessThan(2);
+});

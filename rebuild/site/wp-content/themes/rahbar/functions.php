@@ -33,6 +33,20 @@ add_action(
 			array(),
 			(string) wp_get_theme()->get( 'Version' )
 		);
+		wp_enqueue_script(
+			'rahbar-course-carousel',
+			get_theme_file_uri( 'assets/js/course-carousel.js' ),
+			array(),
+			(string) wp_get_theme()->get( 'Version' ),
+			array( 'in_footer' => true, 'strategy' => 'defer' )
+		);
+		wp_enqueue_script(
+			'rahbar-accessibility',
+			get_theme_file_uri( 'assets/js/accessibility.js' ),
+			array(),
+			(string) wp_get_theme()->get( 'Version' ),
+			array( 'in_footer' => true, 'strategy' => 'defer' )
+		);
 	}
 );
 

@@ -2,9 +2,11 @@
   "name": "rahbar-rebuild-qa",
   "private": true,
   "scripts": {
-    "test:responsive": "playwright test scripts/rebuild/responsive.spec.js --reporter=line"
+    "test:responsive": "playwright test scripts/rebuild/responsive.spec.js --reporter=line",
+    "test:accessibility": "playwright test scripts/rebuild/accessibility.spec.js --reporter=line"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "1.62.1"
   }
 }
