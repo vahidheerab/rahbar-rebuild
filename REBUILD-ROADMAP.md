@@ -253,6 +253,8 @@
 
 ## 9. استراتژی انتقال داده
 
+دیتابیس Legacy محیط توسعه snapshot تقریبی یک ماه قبل است و فقط برای شناخت schema، توسعه script و rehearsal استفاده می‌شود. منبع حقیقت Cutover دیتابیس زنده production خواهد بود. انتقال نهایی باید full snapshot تازه، delta یک‌طرفه idempotent، freeze کوتاه و reconciliation مالی/entitlement داشته باشد؛ کپی مستقیم snapshot فعلی ممنوع است.
+
 ### 9.1 قواعد مشترک
 
 - migration scriptها داخل version control باشند.
@@ -452,9 +454,9 @@
 | فاز | وضعیت | خروجی مورد انتظار |
 |---|---|---|
 | تثبیت محیط‌ها | در حال تکمیل | legacy و rebuild پایدار |
-| Inventory | شروع نشده | ماتریس کامل قابلیت‌ها |
+| Inventory | در حال انجام | inventory افزونه، کد و UI انجام شده؛ مدل داده و integrationها باز هستند |
 | طراحی معماری | در حال انجام | ADRها و مدل مقصد؛ ADR قالب ثبت شده |
-| بازسازی UI | در حال انجام | Block Theme Rahbar 0.5.0 فعال؛ Home و Product prototype با baseline Legacy تطبیق یافته‌اند |
+| بازسازی UI | در حال انجام | Block Theme Rahbar 0.7.4 فعال؛ parity صفحه Home تکمیل و Product prototype موجود است |
 | بازسازی commerce | شروع نشده | محصول تا پرداخت |
 | بازسازی LMS/SpotPlayer | شروع نشده | course تا entitlement |
 | migration scriptها | شروع نشده | انتقال idempotent |
@@ -465,4 +467,4 @@
 
 ## 16. قدم بعدی قطعی
 
-قدم بعدی: visual inventory صفحات Home و Product در Legacy، تثبیت design tokenها و تکمیل header/footer در Block Theme فعال Rahbar. inventory فنی افزونه‌ها، post typeها، taxonomyها، جدول‌ها، roleها، cronها و integrationها نیز موازی تکمیل می‌شود و هیچ داده واقعی تا عبور Gate مربوطه منتقل نخواهد شد.
+قدم بعدی: اجرای read-only مورد `INV-DATA-001` برای ثبت post typeها، taxonomyها، statusها و meta keyهای سفارشی Legacy، سپس تکمیل مقصدهای پایه‌ای که لینک‌های Header/Footer به آن‌ها وابسته‌اند. هیچ داده واقعی تا عبور Gate مربوطه منتقل نخواهد شد.

@@ -41,7 +41,7 @@
 - [ ] 3.4 `INV-UI-002` header، footer، menu، widget، popup و responsive breakpointها را screenshot بگیر
 - [x] 3.5 `INV-PLG-001` فهرست plugin و mu-plugin با وضعیت، نسخه، مالک قابلیت و تصمیم migrate/replace/retire بساز — Evidence: `PLUGIN-INVENTORY.md`، تطبیق read-only با `active_plugins` و جدول‌های Legacy، 2026-08-18
 - [x] 3.6 `INV-CODE-001` shortcode، block، hook، snippet و کد اختصاصی فعال را فهرست کن — Evidence: `docs/baseline/legacy-custom-code-inventory.md`، metadata read-only دیتابیس و static scan، 2026-08-18
-- [ ] 3.7 `INV-DATA-001` post type، taxonomy، status و meta key سفارشی را ثبت کن
+- [ ] 3.7 `INV-DATA-001` post type، taxonomy، status و meta key سفارشی را ثبت کن — DOING: شمارش post type/status، taxonomyها و خانواده‌های پرریسک meta در `docs/baseline/legacy-data-model-inventory.md` ثبت شد؛ دسته‌بندی کامل meta بر اساس مالکیت باز است، 2026-08-22
 - [ ] 3.8 `INV-DATA-002` همه جدول‌ها، engine، collation، حجم و مالک افزونه را ثبت کن
 - [ ] 3.9 `INV-USER-001` role، capability، تعداد کاربران و مسیرهای registration/login/reset/profile را ثبت کن
 - [ ] 3.10 `INV-WC-001` تنظیمات WooCommerce، currency، tax، shipping، coupon، email و order statusها را ثبت کن
@@ -74,7 +74,7 @@
 ## 5. پایه Rebuild و مدیریت WordPress
 
 - [x] 5.0 `RB-THEME-001` اسکلت Block Theme اختصاصی Rahbar را ایجاد، اعتبارسنجی و روی Rebuild فعال کن — Evidence: theme `rahbar` v0.1.0، HTTP 200 و بدون PHP error در log، 2026-08-18
-- [ ] 5.1 `RB-WP-001` نصب تمیز، locale فارسی، timezone تهران و permalink مصوب را تأیید کن
+- [x] 5.1 `RB-WP-001` نصب تمیز، locale فارسی، timezone تهران و permalink مصوب را تأیید کن — Evidence: `docs/baseline/rebuild-base-pages-initialization.md`، initializer تکرارپذیر و HTTP 200 مسیرهای پایه، 2026-08-22
 - [ ] 5.2 `RB-WP-002` Site Health را بدون issue بحرانی و با نسخه‌های pinned ثبت کن
 - [ ] 5.3 `RB-ADM-001` ورود/خروج مدیر و انقضای session را تست کن
 - [ ] 5.4 `RB-ADM-002` ایجاد، ویرایش، preview، publish، schedule، trash و restore نوشته را تست کن
@@ -92,20 +92,21 @@
 - [ ] 6.1 `UI-HOME-001` صفحه خانه desktop/tablet/mobile را با baseline مصوب مقایسه کن
 - [ ] 6.2 `UI-NAV-001` header، menu، submenu، CTA و navigation کیبورد را تست کن
 - [ ] 6.3 `UI-FOOT-001` footer، لینک‌ها، اطلاعات تماس و social linkها را تست کن
-- [ ] 6.4 `UI-PAGE-001` template صفحه عمومی، breadcrumb و hierarchy heading را تست کن
-- [ ] 6.5 `UI-BLOG-001` archive، pagination، single، category، tag و author را تست کن
-- [ ] 6.6 `UI-SEARCH-001` جست‌وجوی نتیجه‌دار، بدون نتیجه، فارسی/لاتین و ورودی خاص را تست کن
-- [ ] 6.7 `UI-404-001` صفحه 404، لینک بازگشت و status code واقعی 404 را تست کن
+- [ ] 6.4 `UI-PAGE-001` template صفحه عمومی، breadcrumb و hierarchy heading را تست کن — DOING: template عمومی و Contact واکنش‌گرا ساخته و heading hierarchy بررسی شد؛ breadcrumb و سایر نمونه‌ها باز است، Evidence: `docs/baseline/rebuild-contact-blog-prototype.md`، 2026-08-22
+- [x] 6.5 `UI-BLOG-001` archive، pagination، single، category، tag و author را تست کن — templateهای home/single/archive/category/tag/author و loop/pagination مشترک تکمیل شد؛ تست داده‌محور پس از migration تکرار می‌شود، Evidence: `docs/baseline/rebuild-blog-completion-report.md`، 2026-08-22
+- [x] 6.6 `UI-SEARCH-001` جست‌وجوی نتیجه‌دار، بدون نتیجه، فارسی/لاتین و ورودی خاص را تست کن — Evidence: `docs/baseline/rebuild-search-404-completion-report.md`، 2026-08-22
+- [x] 6.7 `UI-404-001` صفحه 404، لینک بازگشت و status code واقعی 404 را تست کن — missing URL با HTTP 404 واقعی، Evidence: `docs/baseline/rebuild-search-404-completion-report.md`، 2026-08-22
 - [ ] 6.8 `UI-FORM-001` validation سمت کاربر/سرور، پیام فارسی، success و duplicate submit فرم‌ها را تست کن
-- [ ] 6.9 `UI-RTL-001` RTL، فونت، اعداد، قیمت، تاریخ و mixed-direction text را تست کن
-- [ ] 6.10 `UI-RESP-001` viewportهای 320، 375، 768، 1024 و 1440 را بدون overflow تست کن
+- [x] 6.9 `UI-RTL-001` RTL، فونت، اعداد، قیمت، تاریخ و mixed-direction text را تست کن — با مقاله/محصول واقعی و Shop/Blog بررسی شد، Evidence: `docs/baseline/rebuild-public-sample-content-report.md`، 2026-08-22
+- [x] 6.10 `UI-RESP-001` viewportهای 320، 375، 768، 1024 و 1440 را بدون overflow تست کن — ماتریس ۸ مسیر × ۵ viewport پاس شد، Evidence: `scripts/rebuild/responsive.spec.js` و `docs/baseline/rebuild-public-sample-content-report.md`، 2026-08-22
 - [ ] 6.11 `UI-BRW-001` آخرین Chrome، Firefox و Edge و یک مرورگر موبایل را smoke test کن
 - [ ] 6.12 `A11Y-KBD-001` کل مسیرهای اصلی را فقط با keyboard و focus visible تست کن
 - [ ] 6.13 `A11Y-SR-001` label، landmark، heading، alt و announcement خطا را با screen reader بررسی کن
 - [ ] 6.14 `A11Y-CON-001` contrast، zoom 200% و prefers-reduced-motion را بررسی کن
 - [x] 6.15 `UI-HOME-BEN-001` Benefits چهارگانه Home را با layout چهار/دو/یک ستونه پیاده‌سازی و smoke test کن — Evidence: theme `rahbar` v0.3.0، سه screenshot full-page و گزارش `docs/baseline/rebuild-home-benefits-smoke-test.md`، 2026-08-18
-- [ ] 6.16 `UI-HOME-PAR-001` صفحه Home را سکشن‌به‌سکشن با Legacy در desktop/tablet/mobile تطبیق بده — DOING: ارزیابی مجدد مالک نشان داد baseline قبلی فقط viewport اولیه را پوشش می‌دهد و شباهت بصری کافی نیست؛ Header، Hero و Benefits در حال بازبینی‌اند، 2026-08-19
-- [ ] 6.17 `GATE-UI` همه templateهای must-have و معیارهای accessibility مصوب قبول باشند
+- [x] 6.16 `UI-HOME-PAR-001` صفحه Home را سکشن‌به‌سکشن با Legacy در desktop/tablet/mobile تطبیق بده — Evidence: قالب Rahbar `0.7.4`، screenshot کامل 1440/768/375 و `docs/baseline/rebuild-home-final-parity-report.md`، 2026-08-22
+- [x] 6.17 `UI-CONTACT-PAR-001` صفحه تماس را با ساختار Legacy، اطلاعات عمومی، فرم امن و layout واکنش‌گرا تکمیل کن — Evidence: `docs/baseline/legacy-contact-visual-inventory.md` و `docs/baseline/rebuild-contact-parity-report.md`، 2026-08-22
+- [ ] 6.18 `GATE-UI` همه templateهای must-have و معیارهای accessibility مصوب قبول باشند
 
 ## 7. کاربران، احراز هویت و حریم خصوصی
 
@@ -204,7 +205,9 @@
 
 ## 13. Migration rehearsal و تطبیق داده
 
-- [ ] 13.1 `MIG-PLAN-001` ترتیب migration، script/version، owner، زمان و rollback هر مرحله را freeze کن
+- [ ] 13.1 `MIG-PLAN-001` ترتیب migration، script/version، owner، زمان و rollback هر مرحله را freeze کن — DOING: ماتریس انتقال، ترتیب اجرا، reconciliation و triggerهای rollback در `docs/migration/MANUAL-DATA-MIGRATION-CHECKLIST.md` ثبت شد؛ نسخه script و ownerهای روز Cutover هنوز باز است، 2026-08-22
+- [ ] 13.1a `MIG-SRC-001` ثابت کن منبع full snapshot و delta نهایی دیتابیس زنده production است و snapshot قدیمی توسعه فقط برای rehearsal استفاده می‌شود
+- [ ] 13.1b `MIG-DELTA-001` high-water mark، mapping شناسه، ترتیب delta یک‌طرفه، idempotency و write-freeze روز Cutover را تعریف و تست کن
 - [ ] 13.2 `MIG-BKP-001` dump و checksum منبع و snapshot مقصد پیش از rehearsal را ثبت کن
 - [ ] 13.3 `MIG-USR-001` users/roles/capabilities را migrate و count/نمونه/auth را تطبیق بده
 - [ ] 13.4 `MIG-CNT-001` posts/pages/CPT/taxonomy/meta را migrate و count/نمونه را تطبیق بده

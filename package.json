@@ -1,0 +1,10 @@
+{
+  "name": "rahbar-rebuild-qa",
+  "private": true,
+  "scripts": {
+    "test:responsive": "playwright test scripts/rebuild/responsive.spec.js --reporter=line"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
+  }
+}

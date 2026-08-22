@@ -32,6 +32,7 @@ auth.json
 *.bk
 *.backup
 test-evidence/
+migration-evidence/
 coverage/
 .phpunit.result.cache
 
@@ -64,10 +65,15 @@ rebuild/site/wp-content/themes/*
 !rebuild/site/wp-content/themes/rahbar/**
 
 # Add first-party plugins here when they are created, for example:
-# !rebuild/site/wp-content/plugins/
+!rebuild/site/wp-content/plugins/
 # rebuild/site/wp-content/plugins/*
 # !rebuild/site/wp-content/plugins/rahbar-example/
 # !rebuild/site/wp-content/plugins/rahbar-example/**
+rebuild/site/wp-content/plugins/*
+!rebuild/site/wp-content/plugins/rahbar-contact/
+!rebuild/site/wp-content/plugins/rahbar-contact/**
+!rebuild/site/wp-content/plugins/rahbar-site-core/
+!rebuild/site/wp-content/plugins/rahbar-site-core/**
 
 # WordPress runtime artifacts (defense in depth)
 **/wp-content/uploads/
@@ -86,3 +92,6 @@ rebuild/site/wp-content/themes/*
 
 # Windows reserved artifact
 nul
+node_modules/
+test-results/
+playwright-report/

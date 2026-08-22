@@ -3,7 +3,7 @@ Theme Name: Rahbar
 Theme URI: https://rahbarhesab.com/
 Author: Rahbar
 Description: قالب بلوکی اختصاصی و سبک برای بازسازی وب‌سایت رهبر حساب.
-Version: 0.7.2
+Version: 1.2.0
 Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.1
@@ -21,6 +21,8 @@ Text Domain: rahbar
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 *,
@@ -31,6 +33,7 @@ html {
 
 body {
   min-width: 320px;
+  max-width: 100%;
   overflow-x: clip;
   text-rendering: optimizeLegibility;
 }
@@ -75,6 +78,420 @@ select {
   border: 1px solid var(--wp--preset--color--border);
   border-radius: var(--rahbar-radius-md);
   box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-public-page,
+.rahbar-contact-page,
+.rahbar-blog-page {
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.rahbar-page-hero {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-lg);
+  background: linear-gradient(135deg, #f7f2ff 0%, #fff 70%);
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-page-hero h1 {
+  margin-block: 0.35rem 0.8rem;
+  color: var(--wp--preset--color--primary-dark);
+}
+
+.rahbar-page-hero > :last-child {
+  margin-bottom: 0;
+}
+
+.rahbar-page-eyebrow {
+  margin: 0;
+  color: var(--wp--preset--color--primary);
+  font-weight: 800;
+}
+
+.rahbar-page-content {
+  min-height: 12rem;
+}
+
+.rahbar-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.rahbar-contact-card,
+.rahbar-contact-note,
+.rahbar-blog-card,
+.rahbar-empty-state {
+  padding: 1.5rem;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-contact-card h2,
+.rahbar-contact-card p {
+  margin-block: 0.35rem;
+}
+
+.rahbar-contact-card a {
+  color: var(--wp--preset--color--primary);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rahbar-contact-help {
+  align-items: stretch !important;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--rahbar-radius-lg);
+  background: var(--wp--preset--color--surface-alt);
+}
+
+.rahbar-contact-parity {
+  padding-top: 0;
+}
+
+.rahbar-contact-banner {
+  min-height: 9rem;
+  margin-bottom: 2.5rem;
+  padding: 5.5rem 1rem 0;
+  background: var(--wp--preset--color--primary-soft);
+}
+
+.rahbar-contact-banner__card {
+  max-width: 30rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid #cfc9d5;
+  border-radius: var(--rahbar-radius-md);
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-contact-banner__card h1,
+.rahbar-contact-banner__card p {
+  margin-block: 0.25rem;
+}
+
+.rahbar-contact-guide {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.rahbar-contact-guide h2 {
+  font-size: 1.15rem;
+}
+
+.rahbar-contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 4rem;
+  padding: 1.6rem 1rem;
+  border-bottom: 1px solid #cfc9d5;
+  border-radius: var(--rahbar-radius-md);
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-contact-info-card {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.rahbar-contact-info-card__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0 auto 0.75rem;
+  place-items: center;
+  border: 1px solid var(--wp--preset--color--primary);
+  border-radius: 50%;
+  color: var(--wp--preset--color--primary);
+  font-size: 1.25rem;
+}
+
+.rahbar-contact-info-card h2 {
+  font-size: 1rem;
+}
+
+.rahbar-contact-info-card p {
+  font-size: 0.9rem;
+}
+
+.rahbar-contact-info-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rahbar-contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.rahbar-contact-socials a {
+  padding: 0.3rem 0.55rem;
+  border-radius: 8px;
+  background: var(--wp--preset--color--primary-soft);
+  color: var(--wp--preset--color--primary);
+}
+
+.rahbar-contact-form-section {
+  margin-bottom: 4rem;
+  padding: 0 1.25rem 1.25rem;
+  border: 1px solid #cfc9d5;
+  border-radius: var(--rahbar-radius-md);
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-contact-form-section > h2 {
+  width: fit-content;
+  margin-top: -0.8rem;
+  padding-inline: 0.75rem;
+  background: #fff;
+  font-size: 1rem;
+}
+
+.rahbar-contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.rahbar-contact-form p {
+  margin: 0;
+}
+
+.rahbar-contact-form > p:nth-of-type(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rahbar-contact-form > p:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rahbar-contact-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.rahbar-contact-form input,
+.rahbar-contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #cfc9d5;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--wp--preset--color--text);
+  font: inherit;
+}
+
+.rahbar-contact-form textarea {
+  border-radius: 14px;
+  resize: vertical;
+}
+
+.rahbar-contact-form__wide {
+  grid-column: 1 / -1;
+}
+
+.rahbar-contact-form button {
+  width: 30%;
+  min-width: 9rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--wp--preset--color--accent);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.rahbar-contact-honeypot {
+  position: absolute;
+  inset-inline-start: -10000px;
+}
+
+.rahbar-contact-map {
+  width: 100%;
+  min-height: 22rem;
+  border: 0;
+  background: #e8e6e3;
+}
+
+.rahbar-form-message {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+}
+
+.rahbar-form-message--success { background: #e6f7ed; color: #175c32; }
+.rahbar-form-message--error { background: #fff0f0; color: #8b1e1e; }
+
+.rahbar-blog-grid {
+  gap: 1.5rem;
+}
+
+.rahbar-blog-card {
+  overflow: hidden;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.rahbar-blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rahbar-shadow-md);
+}
+
+.rahbar-blog-card__image { margin: 0; background: var(--wp--preset--color--primary-soft); }
+.rahbar-blog-card__body { padding: 1.25rem; }
+
+.rahbar-blog-card__meta {
+  gap: 0.65rem;
+  color: var(--wp--preset--color--muted);
+  font-size: 0.8rem;
+}
+
+.rahbar-blog-card h2 {
+  margin-block: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.rahbar-blog-card h2 a { color: var(--wp--preset--color--primary); text-decoration: none; }
+.rahbar-blog-card .wp-block-post-excerpt__more-link { color: var(--wp--preset--color--accent); font-weight: 800; }
+
+.rahbar-blog-hero {
+  margin-bottom: 3rem;
+  padding-block: clamp(3rem, 7vw, 6rem);
+  background: var(--wp--preset--color--primary-soft);
+  text-align: center;
+}
+
+.rahbar-blog-query { padding-inline: 1rem; padding-bottom: 5rem; }
+.rahbar-blog-pagination { margin-top: 2.5rem; gap: 0.5rem; }
+.rahbar-blog-pagination a,
+.rahbar-blog-pagination .page-numbers.current { padding: 0.55rem 0.85rem; border-radius: 8px; background: var(--wp--preset--color--primary-soft); }
+
+.rahbar-empty-state {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.rahbar-single-post { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.rahbar-single-post__header { text-align: center; }
+.rahbar-single-post__header h1 { margin-block: 1rem; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.45; }
+.rahbar-single-post__categories a,
+.rahbar-single-post__tags a { display: inline-block; margin: 0.2rem; padding: 0.35rem 0.65rem; border-radius: 999px; background: var(--wp--preset--color--primary-soft); text-decoration: none; }
+.rahbar-single-post__meta { gap: 1rem; color: var(--wp--preset--color--muted); font-size: 0.9rem; }
+.rahbar-single-post__image { overflow: hidden; margin-block: 2.5rem; border-radius: var(--rahbar-radius-lg); box-shadow: var(--rahbar-shadow-sm); }
+.rahbar-single-post__content { font-size: 1.08rem; line-height: 2; }
+.rahbar-single-post__content img { border-radius: var(--rahbar-radius-md); }
+.rahbar-single-post__content .wp-caption,
+.rahbar-single-post__content img,
+.rahbar-single-post__content iframe,
+.rahbar-single-post__content video { max-width: 100% !important; height: auto; }
+.rahbar-single-post__content table { display: block; max-width: 100%; overflow-x: auto; }
+
+.rahbar-search-hero {
+  margin-bottom: 2.5rem;
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  background: var(--wp--preset--color--primary-soft);
+  text-align: center;
+}
+
+.rahbar-search-form .wp-block-search__inside-wrapper {
+  overflow: hidden;
+  padding: 0.35rem;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-search-form .wp-block-search__input { border: 0; background: transparent; }
+.rahbar-search-form .wp-block-search__button { border-radius: 999px; }
+.rahbar-search-results { padding: 0 1rem 5rem; }
+.rahbar-search-list { display: grid; gap: 1rem; }
+
+.rahbar-search-result {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-md);
+  background: #fff;
+  box-shadow: var(--rahbar-shadow-sm);
+}
+
+.rahbar-search-result h2 { margin-block: 0.6rem; font-size: 1.3rem; }
+.rahbar-search-result h2 a { color: var(--wp--preset--color--primary); text-decoration: none; }
+.rahbar-search-result__meta { color: var(--wp--preset--color--muted); font-size: 0.82rem; }
+.rahbar-search-empty { padding-block: 3rem 5rem; text-align: center; }
+.rahbar-search-empty__icon { margin: 0; color: var(--wp--preset--color--accent); font-size: 5rem; line-height: 1; }
+
+.rahbar-404-page {
+  display: grid;
+  min-height: 38rem;
+  padding: clamp(3rem, 7vw, 6rem) 1rem;
+  place-items: center;
+  background: linear-gradient(180deg, var(--wp--preset--color--primary-soft), #fff);
+}
+
+.rahbar-404-card {
+  width: min(100%, 820px);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid var(--wp--preset--color--border);
+  border-radius: var(--rahbar-radius-lg);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: var(--rahbar-shadow-md);
+  text-align: center;
+}
+
+.rahbar-404-code { margin: 0; color: var(--wp--preset--color--accent); font-size: clamp(5rem, 16vw, 10rem); font-weight: 900; line-height: 0.9; }
+.wc-block-mini-cart__drawer { max-width: 100vw; contain: layout paint; }
+
+.woocommerce-shop main,
+.tax-product_cat main,
+.tax-product_tag main { max-width: 1400px; margin-inline: auto; padding: 2rem 1.25rem 4rem; }
+.woocommerce .woocommerce-breadcrumb { color: var(--wp--preset--color--muted); }
+.woocommerce .woocommerce-result-count,
+.woocommerce .woocommerce-ordering { margin-bottom: 1.5rem; }
+.woocommerce .woocommerce-ordering select { padding: 0.55rem 0.75rem; border: 1px solid var(--wp--preset--color--border); border-radius: 8px; background: #fff; font: inherit; }
+.woocommerce ul.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; clear: both; }
+.woocommerce ul.products::before,
+.woocommerce ul.products::after { display: none; }
+.woocommerce ul.products li.product { float: none !important; width: auto !important; margin: 0 !important; padding: 0 0 1.25rem; overflow: hidden; border: 1px solid var(--wp--preset--color--border); border-radius: var(--rahbar-radius-md); background: #fff; box-shadow: var(--rahbar-shadow-sm); text-align: center; }
+.woocommerce ul.products li.product a img { width: 100%; aspect-ratio: 1 / 1; margin: 0 0 1rem; object-fit: cover; }
+.woocommerce ul.products li.product .woocommerce-loop-product__title { min-height: 4.2rem; padding: 0 1rem; color: var(--wp--preset--color--primary); font-size: 1.05rem; line-height: 1.65; }
+.woocommerce ul.products li.product .price { min-height: 2rem; padding-inline: 1rem; color: var(--wp--preset--color--text); }
+.woocommerce ul.products li.product .button { margin-top: 0.75rem; border-radius: 9px; background: var(--wp--preset--color--primary); }
+.woocommerce span.onsale { min-width: auto; min-height: auto; padding: 0.35rem 0.65rem; border-radius: 8px; background: var(--wp--preset--color--accent); line-height: 1.4; }
+.woocommerce span.onsale { font-size: 0; }
+.woocommerce span.onsale::after { content: "تخفیف"; font-size: 0.8rem; }
+
+@media (max-width: 781px) {
+  .woocommerce ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+}
+
+@media (max-width: 420px) {
+  .rahbar-header-actions { width: 100%; gap: 0.25rem; justify-content: center; flex-wrap: nowrap !important; }
+  .rahbar-header-actions .wp-block-button__link { padding: 0.65rem 0.45rem; font-size: 0.72rem; }
+  .rahbar-header-actions .rahbar-icon-button .wp-block-button__link { width: 2.25rem; padding: 0; }
+  .woocommerce-shop main,
+  .tax-product_cat main,
+  .tax-product_tag main { padding-inline: 0.75rem; }
+  .woocommerce ul.products li.product .woocommerce-loop-product__title { min-height: 5.2rem; padding-inline: 0.55rem; font-size: 0.9rem; }
+  .woocommerce ul.products li.product .button { padding-inline: 0.75rem; font-size: 0.78rem; }
 }
 
 .rahbar-visually-hidden {
@@ -995,6 +1412,11 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .rahbar-contact-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.5rem;
+  }
+
   .rahbar-header-nav-row .wp-block-navigation__responsive-container-open {
     display: flex !important;
   }
@@ -1090,6 +1512,54 @@ select {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .rahbar-contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rahbar-contact-banner {
+    min-height: 6.5rem;
+    padding-top: 3rem;
+  }
+
+  .rahbar-contact-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rahbar-contact-form-section .wp-block-columns {
+    flex-direction: column;
+  }
+
+  .rahbar-contact-form-section .wp-block-column {
+    width: 100%;
+    flex-basis: 100% !important;
+  }
+
+  .rahbar-contact-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rahbar-contact-form__wide {
+    grid-column: auto;
+  }
+
+  .rahbar-contact-form > p:nth-of-type(1),
+  .rahbar-contact-form > p:nth-of-type(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .rahbar-contact-form button {
+    width: 100%;
+  }
+
+  .rahbar-contact-map {
+    display: none;
+  }
+
+  .rahbar-course-card {
+    min-height: 23rem;
+  }
+
   .rahbar-news-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1116,10 +1586,39 @@ select {
     min-height: 5.5rem;
   }
 
+  .rahbar-footer-columns {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .rahbar-footer-columns > .wp-block-column {
+    width: 100%;
+    flex-basis: 100% !important;
+  }
+
+  .rahbar-footer-trust,
+  .rahbar-footer-promises {
+    justify-content: center;
+  }
+
+  .rahbar-footer-licenses {
+    width: 100%;
+    justify-content: center;
+  }
+
   .rahbar-header-search,
-  .rahbar-header-contact,
-  .rahbar-header-nav {
+  .rahbar-header-contact {
     display: none !important;
+  }
+
+  .rahbar-header-nav {
+    display: block !important;
+    padding-block: 0.4rem;
+  }
+
+  .rahbar-header-nav-row {
+    min-height: 2.75rem;
+    justify-content: center;
   }
 
   .rahbar-mobile-actions {
@@ -1127,6 +1626,11 @@ select {
     inset-inline-end: 0;
     display: flex;
     gap: 0.4rem;
+  }
+
+  .rahbar-mobile-actions .rahbar-icon-button .wp-block-button__link {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .rahbar-legacy-logo img {
@@ -1140,6 +1644,9 @@ select {
   }
 
   .rahbar-legacy-hero__layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     min-height: 0;
     gap: 0;
   }
@@ -1154,7 +1661,9 @@ select {
     padding: 1.25rem 1.25rem 2rem;
     border-radius: 16px;
     width: 100%;
-    max-width: calc(100vw - 2.5rem);
+    max-width: 100%;
+    margin-inline: 0;
+    overflow: hidden;
   }
 
   .rahbar-legacy-hero__card::after {
@@ -1179,7 +1688,13 @@ select {
   }
 
   .rahbar-legacy-hero__visual {
+    order: 2;
+    width: 100%;
     margin-top: 0 !important;
+  }
+
+  .rahbar-legacy-hero__layout > .wp-block-column:first-child {
+    order: 1;
   }
 
   .rahbar-legacy-hero__image img {

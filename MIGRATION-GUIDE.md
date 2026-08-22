@@ -2,6 +2,8 @@
 
 این سند runbook اصلی انتقال از سایت فعلی (`legacy`) به وردپرس تمیز (`rebuild`) است. مراحل را به‌ترتیب انجام دهید و هیچ مرحله داده‌ای را بدون backup معتبر جلو نبرید.
 
+چک‌لیست دستی اپراتور، ماتریس allowlist و فرم reconciliation در `docs/migration/MANUAL-DATA-MIGRATION-CHECKLIST.md` نگهداری می‌شود و در هر rehearsal و Cutover باید نسخه تازه آن تکمیل شود.
+
 نقشه کامل شناسایی قابلیت‌ها، معماری مقصد، روش انتقال هر نوع داده و معیار پایان کار در `REBUILD-ROADMAP.md` نگه‌داری می‌شود. این دو سند باید هم‌زمان به‌روز شوند.
 
 ## 1. وضعیت مبنا
@@ -20,6 +22,8 @@
 Legacy همچنین SourceGuardian Loader و ionCube Loader رسمی PHP 8.1 را برای اجرای فایل‌های رمزگذاری‌شده موجود در snapshot نصب می‌کند. این loaderها فقط نیاز سازگاری legacy هستند و نباید بدون اثبات نیاز به rebuild منتقل شوند.
 
 مبنای 2026-08-17: تعداد 137 جدول، حدود 339.72 MB داده و 4.46 GB فایل. dump اولیه در `legacy/backups/legacy-before-docker.sql` است و نباید commit شود.
+
+> **وضعیت تازگی داده:** دیتابیس Legacy محیط توسعه snapshot تقریبی یک ماه قبل از production است. این snapshot فقط برای inventory، ساخت migration script و rehearsal استفاده می‌شود. در Cutover، دیتابیس زنده سایت اصلی منبع حقیقت است و همه شمارش‌ها، checksumها و reconciliation باید دوباره از production ثبت شوند.
 
 ## 2. پیش‌نیازها
 
@@ -83,6 +87,10 @@ docker compose -f rebuild/compose.yaml ps
 
 ## 7. انتقال داده آزمایشی
 
+برای visual QA محلی، انتقال انتخابی محتوای عمومی با `scripts/rebuild/Import-PublicSamples.ps1` مجاز است. این مسیر فقط نوشته/محصول عمومی، taxonomy، قیمت نمایشی و تصویر شاخص را منتقل می‌کند و کاربر، سفارش، پرداخت، entitlement، license و فایل دانلودی را وارد نمی‌کند.
+
+رکوردهای نمونه با `_rahbar_legacy_source_id` و تصویرهایشان با `_rahbar_legacy_attachment_for` علامت‌گذاری می‌شوند. adapter نهایی Cutover باید همین رکوردها را بر اساس شناسه Legacy reconcile/update کند و رکورد تکراری نسازد. محتوای نمونه از snapshot قدیمی Legacy است و جایگزین snapshot تازه production نیست.
+
 1. dump تازه legacy و checksum آن را با timestamp ثبت کنید.
 2. پیش از import از دیتابیس rebuild snapshot بگیرید.
 3. migration script باید تکرارپذیر و idempotent باشد؛ SQL دستی ثبت‌نشده ممنوع است.
@@ -90,6 +98,41 @@ docker compose -f rebuild/compose.yaml ps
 5. URLها را با WP-CLI `search-replace` یا ابزار serialization-aware عوض کنید؛ SQL replace خام ممنوع است.
 6. شمارش رکوردها، نمونه تصادفی و مجموع‌های مالی را تطبیق دهید.
 7. زمان، خطا و rollback هر rehearsal ثبت شود.
+
+### 7.1 قرارداد داده قابل انتقال
+
+انتقال بر مبنای allowlist انجام می‌شود، نه کپی کامل دیتابیس. گروه‌های زیر باید از منبع production تازه منتقل و reconcile شوند:
+
+1. کاربران، credential hashهای سازگار، roleها و capabilityهای مصوب؛
+2. نوشته‌ها، برگه‌ها، taxonomyها و metadata محتوایی موردنیاز قالب مقصد؛
+3. محصولات، variationها، attributeها، قیمت، موجودی و media referenceهای معتبر؛
+4. مشتریان، سفارش‌ها، line itemها، مالیات، تخفیف، status، note و transaction referenceهای لازم؛
+5. دوره، درس، enrollment، progress و entitlementهای مصوب؛
+6. SpotPlayer license/mapping فقط پس از تعریف قرارداد و تست idempotency؛
+7. SEO metadata و redirectهای انتخاب‌شده؛
+8. media انتخاب‌شده با checksum و کنترل دسترسی فایل خصوصی.
+
+موارد زیر به‌صورت پیش‌فرض منتقل نمی‌شوند مگر با تصمیم مستند جدید:
+
+- Elementor layout metadata و templateهای قدیمی؛
+- cache، transient، session، log، analytics خام و داده‌های موقت؛
+- داده TeraWallet به‌عنوان قابلیت فعال مقصد؛ ledger آن فقط برای سابقه و reconciliation آرشیو می‌شود؛
+- تنظیمات و داده افزونه‌های retired یا orphan؛
+- secretها و credentialهای production؛ این مقادیر در مقصد جداگانه provision می‌شوند.
+
+### 7.2 انتقال تازه و delta روز Cutover
+
+«انتقال real-time» در این پروژه به معنی از دست نرفتن تغییرات production تا لحظه Cutover است، نه اتصال مستقیم و دائمی دو دیتابیس:
+
+1. یک full snapshot تازه از production با timestamp و SHA-256 گرفته شود.
+2. migration rehearsal نهایی روی همان snapshot اجرا و high-water mark هر entity ثبت شود؛ برای مثال ID و `modified_at` یا زمان ایجاد آخرین سفارش.
+3. تا پیش از freeze، deltaهای جدید به‌صورت idempotent و یک‌طرفه از production به Rebuild منتقل شوند.
+4. Legacy برای پنجره کوتاه read-only شود و زمان freeze ثبت گردد.
+5. delta نهایی کاربران، سفارش‌ها، پرداخت‌ها، entitlementها، محتوا و media اجرا شود.
+6. countها، مجموع مالی سفارش‌ها، transaction IDها و entitlementها بین مبدأ و مقصد reconcile شوند.
+7. فقط پس از smoke test و reconciliation، route/DNS به Rebuild تغییر کند.
+
+هر delta باید retry-safe باشد و mapping شناسه مبدأ به مقصد داشته باشد. اجرای sync دوطرفه، SQL دستی ثبت‌نشده یا تکیه بر snapshot فعلی توسعه ممنوع است.
 
 ## 8. Exit Gate
 
@@ -106,7 +149,7 @@ docker compose -f rebuild/compose.yaml ps
 
 1. TTL دامنه را از قبل کاهش دهید و maintenance window/مسئول rollback را تعیین کنید.
 2. legacy را read-only کنید و زمان freeze را ثبت کنید.
-3. dump نهایی و media delta بگیرید؛ checksum و شمارش‌ها را تأیید کنید.
+3. dump نهایی از دیتابیس زنده production و media delta بگیرید؛ checksum، high-water mark و شمارش‌ها را تأیید کنید. snapshot محیط توسعه منبع Cutover نیست.
 4. migration نهایی و search-replace دامنه را اجرا کنید.
 5. smoke test صفحه اصلی، login، checkout، پرداخت، callback و email انجام دهید.
 6. DNS/reverse proxy را تغییر دهید و logها را پایش کنید.

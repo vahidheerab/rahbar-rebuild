@@ -242,3 +242,113 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - assetهای مجوز به‌صورت انتخابی از Footer Legacy منتقل و با HTTP 200 تأیید شدند.
 - baseline بلند Rebuild پس از تکمیل بدنه و Footer دوباره تولید شد.
 - checkpoint: ساختار کامل Home از Header تا Footer موجود است؛ `UI-HOME-PAR-001` تا پایان بازبینی و اصلاح desktop/tablet/mobile همچنان DOING است.
+
+### 2026-08-22 — `home-final-responsive-parity`
+
+- صفحه Home با Playwright و viewport واقعی 1440، 768 و 375 به‌صورت full-page ثبت و با baseline بلند Legacy بازبینی شد.
+- overflow ساختاری Hero در موبایل رفع و ترتیب card/image به layout عمودی تبدیل شد.
+- actionهای جست‌وجو و حساب و navigation موبایل قابل دسترس شدند.
+- ستون‌های Footer در موبایل عمودی و مجوزها و promise cardها خوانا شدند.
+- ارتفاع کارت دوره در موبایل کاهش یافت؛ داده جعلی برای carousel یا آموزش رایگان ساخته نشد.
+- HTTP 200، Compose config، PHP lint، OpenSpec strict validation و نبود خطاهای PHP در log تأیید شد.
+- مقصد چند لینک Header/Footer هنوز 404 است و ذیل taskهای template، account و commerce باقی می‌ماند؛ `GATE-UI` بسته نشد.
+- checkpoint: `UI-HOME-PAR-001` تکمیل؛ اقدام بعدی `INV-DATA-001` و سپس ساخت مقصدهای پایه لینک‌های Home است.
+
+### 2026-08-22 — `legacy-data-model-inventory-start`
+
+- پس از smoke check موفق Home، اجرای read-only مورد `INV-DATA-001` شروع شد.
+- post typeها، statusها، taxonomyها و شمارش meta keyها مستقیماً از دیتابیس Legacy استخراج شدند.
+- ۴۲ محصول، ۸٬۵۸۳ سفارش، ۵۸۶ سؤال و داده‌های هم‌زمان WooCommerce، Tutor، SpotPlayer، Elementor و SEO شناسایی شدند.
+- ۵۳۵ post meta key، ۱۹۵ user meta key و ۱۱ term meta key متمایز وجود دارد؛ انتقال خام metaها رد و نیاز به allowlist ثبت شد.
+- status سفارشی `wc-arrival-shipment` و خانواده‌های حساس Zibal، SpotPlayer، Wallet و checkout به‌عنوان موارد نیازمند قرارداد ثبت شدند.
+- Evidence اولیه در `docs/baseline/legacy-data-model-inventory.md` ثبت شد.
+- checkpoint: `INV-DATA-001` در حال انجام؛ اقدام بعدی دسته‌بندی meta keyها به تفکیک post type و مالکیت افزونه است.
+
+### 2026-08-22 — `production-data-source-contract`
+
+- مالک پروژه اعلام کرد snapshot دیتابیس Legacy محیط توسعه تقریباً یک ماه قدیمی است.
+- snapshot فعلی فقط برای inventory، توسعه migration script و rehearsal معتبر اعلام شد؛ منبع حقیقت Cutover دیتابیس زنده production است.
+- گروه‌های داده قابل انتقال و موارد پیش‌فرض خارج از scope در `MIGRATION-GUIDE.md` ثبت شدند.
+- قرارداد انتقال روز Cutover شامل full snapshot تازه، high-water mark، delta یک‌طرفه idempotent، freeze کوتاه و reconciliation ثبت شد.
+- sync دوطرفه یا SQL دستی ثبت‌نشده ممنوع شد؛ در صورت نیاز به همگام‌سازی پیوسته، طراحی CDC/queue مستقل لازم است.
+- checkpoint: قرارداد منبع داده ثبت شد؛ `INV-DATA-001` باید allowlist دقیق هر entity/meta را تکمیل کند.
+
+### 2026-08-22 — `manual-migration-allowlist-and-runbook`
+
+- meta keyها بدون خواندن مقدار یا PII به تفکیک product، order، course، lesson، question و content شمارش شدند.
+- ماتریس `migrate/transform/archive-only/retire` برای کاربران، محتوا، commerce، LMS، SpotPlayer، SEO، media و داده‌های retired ثبت شد.
+- allowlist اولیه metaهای کاربر، محصول، سفارش و محتوا تعریف شد.
+- ترتیب دستی rehearsal و Cutover، جدول reconciliation، triggerهای توقف/rollback و فرم ثبت Run ایجاد شد.
+- ورود رکوردبه‌رکورد، کپی کامل جدول، sync دوطرفه و SQL دستی ثبت‌نشده ممنوع ثبت شد؛ اپراتور مراحل و نتایج را دستی تأیید می‌کند اما انتقال با script نسخه‌شده انجام می‌شود.
+- Evidence اجرایی در `docs/migration/MANUAL-DATA-MIGRATION-CHECKLIST.md` ثبت شد.
+- checkpoint: runbook اولیه آماده است؛ تصمیم تجاری metaهای دوره، status سفارشی سفارش، SEO canonical و قرارداد entitlement پیش از freeze نهایی لازم است.
+
+### 2026-08-22 — `cutover-orchestrator-scaffold`
+
+- اسکریپت واحد `scripts/migration/Invoke-RahbarCutover.ps1` با actionهای Preflight، Baseline، Snapshot، Reconcile و Cutover ایجاد شد.
+- snapshot تراکنشی، SHA-256، countهای کلیدی، مجموع مبلغ سفارش و high-water markها پیاده‌سازی شد.
+- reconciliation در صورت هر اختلاف fail می‌شود و Cutover را متوقف می‌کند.
+- Cutover بدون تأیید صریح production/freeze و migration adapter بازبینی‌شده عمداً اجرا نمی‌شود.
+- checkpoint: orchestration و safety آماده است؛ adapter واقعی پس از تثبیت schema و قرارداد payment/LMS/SpotPlayer پیاده‌سازی می‌شود.
+
+### 2026-08-22 — `rebuild-base-pages-and-permalinks`
+
+- پیش از تغییر داده، snapshot تراکنشی و SHA-256 دیتابیس Legacy و Rebuild در Evidence محلی خارج از Git ساخته شد.
+- initializer تکرارپذیر صفحات پایه Rebuild در `scripts/rebuild/` ایجاد و اجرا شد.
+- permalink، timezone تهران و locale فارسی تنظیم و rewrite استاندارد WordPress فقط برای Rebuild ثبت شد.
+- ۱۵ مقصد لینک Header/Footer ایجاد و صفحات WooCommerce فارسی شدند.
+- اجرای دوم initializer بدون duplicate موفق بود و مسیرهای Shop، Cart، Account، Blog و Contact پاسخ HTTP 200 دادند.
+- rollback به dump `target-before` همان Run در `docs/baseline/rebuild-base-pages-initialization.md` ثبت شد.
+- checkpoint: `RB-WP-001` تکمیل؛ اقدام بعدی تکمیل template و محتوای صفحه عمومی/Contact و سپس Blog است.
+
+### 2026-08-22 — `contact-and-blog-prototype`
+
+- template اختصاصی Contact با اطلاعات تماس قابل کلیک، راهنمای پشتیبانی و CTA حساب کاربری ساخته شد.
+- layout Contact در desktop سه‌ستونه و mobile تک‌ستونه شد.
+- template صفحه عمومی با hero/content container مشترک بهبود یافت.
+- `home.html` برای Blog با Query، pagination، کارت نوشته و empty-state ایجاد شد.
+- initializer یک Home page پایدار ساخت و `page_on_front/page_for_posts` را idempotent تنظیم کرد؛ front-page فعلی حفظ شد.
+- Contact و Blog روی desktop/mobile screenshot و با HTTP 200 تأیید شدند؛ log بدون PHP error بود.
+- checkpoint: prototype Contact و Blog آماده است؛ اقدام بعدی تکمیل breadcrumb و templateهای single/archive/category/tag/author است.
+
+### 2026-08-22 — `contact-legacy-parity`
+
+- صفحه Contact در Rebuild بر اساس baseline تصویری Legacy برای desktop، tablet و mobile تکمیل شد.
+- بنر، راهنمای خرید، CTA، چهار کارت اطلاعات، فرم و جایگاه نقشه با ترتیب مرجع پیاده‌سازی شدند.
+- افزونه first-party و مستقل `rahbar-contact` برای فرم ساخته شد؛ nonce، honeypot، rate limit، sanitize، محدودیت طول و مقصد `admin_email` دارد.
+- initializer افزونه را idempotent فعال می‌کند و اجرای مجدد آن duplicate نساخت.
+- مسیر `/contact/` پاسخ HTTP 200 داد و lint کد، Compose config و بررسی log بدون خطای PHP بود.
+- ارسال ایمیل واقعی عمداً در QA انجام نشد؛ تست تحویل SMTP پس از تنظیم mail provider محیط مقصد باقی می‌ماند.
+- Evidence: `docs/baseline/legacy-contact-visual-inventory.md` و `docs/baseline/rebuild-contact-parity-report.md` و شش screenshot مرجع/Rebuild.
+- checkpoint: `UI-CONTACT-PAR-001` تکمیل؛ اقدام بعدی ادامه `UI-BLOG-001` با templateهای single/archive/category/tag/author است.
+
+### 2026-08-22 — `blog-template-completion`
+
+- Blog home، single، archive، category، tag و author با templateهای اختصاصی تکمیل شدند.
+- loop مشترک کارت‌ها شامل تصویر شاخص، تاریخ، دسته‌بندی، excerpt، empty-state و pagination ایجاد شد.
+- نوشته تکی شامل دسته‌بندی، عنوان، تاریخ، نویسنده، زمان مطالعه، تصویر شاخص، محتوای خوانا، برچسب و پیمایش قبلی/بعدی شد.
+- نسخه قالب Rahbar به `1.0.0` رسید و routeهای Blog، نوشته نمونه و دسته موجود پاسخ HTTP 200 دادند.
+- برای آلوده نکردن Rebuild، نوشته جعلی جهت پرکردن grid یا pagination ساخته نشد؛ سناریوهای چندصفحه‌ای و tag/author پرشده پس از migration محتوا دوباره تست می‌شوند.
+- Evidence: `docs/baseline/rebuild-blog-completion-report.md` و screenshotهای final Blog/Single.
+- checkpoint: `UI-BLOG-001` تکمیل؛ اقدام بعدی تکمیل templateهای Search/404 و سپس آزمون جامع responsive/accessibility است.
+
+### 2026-08-22 — `search-and-404-completion`
+
+- templateهای Search و 404 با طراحی واکنش‌گرا، متن فارسی و مسیرهای بازیابی تکمیل شدند.
+- Search نتیجه‌دار، بدون نتیجه، عبارت فارسی، لاتین و ورودی HTML-like تست شد؛ ورودی خاص به raw script تبدیل نشد.
+- نتیجه‌ها برای post/page و سایر content typeهای قابل جست‌وجو، همراه تاریخ، دسته، excerpt و pagination رندر می‌شوند.
+- URL عمداً ناموجود status واقعی HTTP 404 داد و لینک‌های Home، Contact و Blog بررسی شدند.
+- نسخه قالب Rahbar به `1.1.0` رسید و چهار screenshot دسکتاپ/موبایل ثبت شد.
+- Evidence: `docs/baseline/rebuild-search-404-completion-report.md`.
+- checkpoint: `UI-SEARCH-001` و `UI-404-001` تکمیل؛ اقدام بعدی اجرای `UI-RTL-001` و `UI-RESP-001` و سپس accessibility است.
+
+### 2026-08-22 — `public-samples-and-responsive-matrix`
+
+- پیش از تغییر داده، snapshot و SHA-256 مقصد در evidence محلی خارج Git ثبت شد.
+- importer نسخه‌شده ۶ مقاله و ۶ محصول عمومی Legacy را همراه تصویر شاخص به Rebuild وارد کرد؛ داده کاربر/سفارش/پرداخت/دسترسی/دانلود وارد نشد.
+- اجرای اول ۱۲ رکورد ساخت و اجرای مجدد همان ۱۲ رکورد را update کرد؛ duplicate ساخته نشد.
+- Blog، مقاله طولانی، Shop و محصول واقعی بررسی و Shop برای grid سه/دو ستونه، CTA فارسی و کارت‌های همسان اصلاح شد.
+- آزمون Playwright روی Home/Blog/Article/Shop/Product/Contact/Search/404 در عرض‌های 320/375/768/1024/1440 اجرا شد.
+- overflow هدر در 320 و تصویر ثابت مقاله پیدا و اصلاح شد؛ ۲۴ حالت بزرگ‌تر و سپس ۱۶ حالت موبایل پاس شدند.
+- Evidence: `docs/baseline/rebuild-public-sample-content-report.md` و شش screenshot محتوای واقعی.
+- checkpoint: `UI-RTL-001` و `UI-RESP-001` تکمیل؛ اقدام بعدی keyboard/focus و screen-reader/contrast accessibility است.
