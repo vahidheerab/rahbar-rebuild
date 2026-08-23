@@ -388,3 +388,21 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - صدور lazy لایسنس هنگام مشاهده سفارش رد شد؛ مسیر durable paid event → retryable provisioning برای Rebuild مصوب شد.
 - CRM Connector مطابق تصمیم قبلی retired می‌ماند و به مسیر پرداخت Rebuild وارد نمی‌شود.
 - Evidence: `docs/architecture/payment-entitlement-contract.md`؛ اقدام بعدی scaffold افزونه مستقل Payment Bridge و fake sandbox adapter است.
+
+### 2026-08-23 — `payment-bridge-selection-and-core`
+
+- `rahbar-ipg-gateway` کامل audit شد؛ امنیت callback/verify مناسب اما معماری آن تک‌درگاهی و محدود به چرخه JSON token/verify ارزیابی شد.
+- نبود adapter interface، multi-provider، webhook/refund contract، تست خودکار و asset اعلام‌شده Checkout Block ثبت شد.
+- معماری adapter-based `Rahbar Payment Bridge` به‌عنوان گزینه منعطف‌تر انتخاب شد؛ IPG قبلی behavioral reference باقی ماند.
+- قواعد و معماری داخلی افزونه، value objectها، ProviderAdapter/Registry و Fake Adapter بدون تماس خارجی ساخته شدند.
+- contract testهای success، decline، invalid token و amount mismatch پاس شدند؛ هیچ درگاه واقعی یا secret فعال نشد.
+- Evidence: `docs/architecture/payment-gateway-selection.md`؛ برش بعدی order repository، lock/claim و callback orchestration است.
+
+### 2026-08-23 — `payment-bridge-sandbox-runtime`
+
+- Fake Gateway فقط برای `local/test` به WooCommerce و Checkout Block متصل شد؛ production آن را ثبت نمی‌کند.
+- snapshot مبلغ/ارز/token/correlation، اعتبارسنجی order key/payment method، قفل سفارش و transaction claim هش‌شده پیاده‌سازی شد.
+- callback پس از verify موفق `payment_complete()` و رویداد `rahbar_payment_verified` را اجرا می‌کند؛ هیچ SpotPlayer call وجود ندارد.
+- contract، integration و browser test پاس شدند؛ runner ایمیل‌ها را خاموش و سفارش‌های تست را حذف می‌کند.
+- چک‌لیست کوچک و پایدار در `rahbar-payment-bridge/CHECKLIST.md` ثبت شد.
+- Evidence: `docs/baseline/rebuild-payment-bridge-sandbox-report.md`؛ تست concurrency واقعی و HTTP failure boundary باقی است.

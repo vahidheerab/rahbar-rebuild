@@ -74,6 +74,8 @@ rebuild/site/wp-content/plugins/*
 !rebuild/site/wp-content/plugins/rahbar-contact/**
 !rebuild/site/wp-content/plugins/rahbar-site-core/
 !rebuild/site/wp-content/plugins/rahbar-site-core/**
+!rebuild/site/wp-content/plugins/rahbar-payment-bridge/
+!rebuild/site/wp-content/plugins/rahbar-payment-bridge/**
 
 # WordPress runtime artifacts (defense in depth)
 **/wp-content/uploads/

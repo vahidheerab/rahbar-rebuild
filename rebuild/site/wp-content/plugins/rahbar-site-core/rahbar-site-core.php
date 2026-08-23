@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Rahbar Site Core
  * Description: رفتارهای عمومی و مستقل از پوسته برای Rebuild راهبر حساب.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Requires at least: 7.0
  * Requires PHP: 8.1
  */
@@ -37,3 +37,33 @@ add_filter( 'woocommerce_breadcrumb_defaults', static function ( array $defaults
 	$defaults['home'] = 'خانه';
 	return $defaults;
 } );
+
+/**
+ * Keep the public checkout Iran-only, including sessions created before the
+ * store country was corrected. The admin customer editor keeps the raw value
+ * so historical orders and profiles remain auditable.
+ */
+function rahbar_public_customer_country( string $country ): string {
+	if ( is_admin() && ! wp_doing_ajax() ) {
+		return $country;
+	}
+
+	return 'IR';
+}
+
+add_filter( 'woocommerce_customer_get_billing_country', 'rahbar_public_customer_country' );
+add_filter( 'woocommerce_customer_get_shipping_country', 'rahbar_public_customer_country' );
+
+add_filter( 'woocommerce_customer_default_location_array', static function ( array $location ): array {
+	$location['country'] = 'IR';
+	$location['state']   = '';
+	return $location;
+} );
+
+function rahbar_iran_only_countries( array $countries ): array {
+	$iran = $countries['IR'] ?? 'Iran';
+	return array( 'IR' => $iran );
+}
+
+add_filter( 'woocommerce_countries_allowed_countries', 'rahbar_iran_only_countries' );
+add_filter( 'woocommerce_countries_shipping_countries', 'rahbar_iran_only_countries' );

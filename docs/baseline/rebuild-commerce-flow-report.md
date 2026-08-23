@@ -34,3 +34,14 @@ npm run test:commerce
 ```
 
 The translation installer pins WooCommerce `11.0.1`, locale `fa_IR`, and verifies SHA-256 before extraction.
+
+## Iran-only checkout regression (2026-08-23)
+
+- Public billing and shipping countries are constrained to `IR` in Rahbar Site Core.
+- The default customer location is `IR`, including checkout sessions created before the store setting was corrected.
+- Historical customer/order values remain visible unchanged in the WordPress admin.
+- Selecting an Iranian province no longer triggers the unsupported-country validation message.
+
+Automated evidence: `npm run test:checkout-iran` (`1 passed`).
+
+Human evidence: checkout completed successfully on 2026-08-23, invoice issued, and sandbox order `87` persisted as paid/processing with a transaction ID.
