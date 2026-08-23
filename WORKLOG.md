@@ -379,3 +379,12 @@ Rebuild با قالب `rahbar 0.5.0` و WooCommerce `11.0.1` بالا است. Ho
 - تست واقعی add/persistence/remove cart، validation تسویه‌حساب و فرم ورود با Playwright پاس شد (`3 passed`).
 - هیچ سفارش یا پرداختی ایجاد نشد؛ درگاه sandbox و قرارداد اتصال entitlement هنوز باقی است.
 - Evidence: `docs/baseline/rebuild-commerce-flow-report.md` و سه screenshot صفحه‌های Commerce.
+
+### 2026-08-22 — `payment-entitlement-contract`
+
+- درگاه فعال Legacy، hookهای callback/verify، قفل و transaction identity بدون خواندن یا ثبت secret inventory شدند.
+- آمار تجمیعی snapshot برای Zibal transactionها و SpotPlayer product/order metadata ثبت شد؛ اختلاف طبیعی آن‌ها الزام reconciliation ردیفی را نشان داد.
+- WooCommerce به‌عنوان source of truth سفارش/پرداخت و entitlement مستقل با کلید یکتای provider/order/product/customer تعریف شد.
+- صدور lazy لایسنس هنگام مشاهده سفارش رد شد؛ مسیر durable paid event → retryable provisioning برای Rebuild مصوب شد.
+- CRM Connector مطابق تصمیم قبلی retired می‌ماند و به مسیر پرداخت Rebuild وارد نمی‌شود.
+- Evidence: `docs/architecture/payment-entitlement-contract.md`؛ اقدام بعدی scaffold افزونه مستقل Payment Bridge و fake sandbox adapter است.

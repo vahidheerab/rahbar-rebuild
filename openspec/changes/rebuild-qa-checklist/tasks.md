@@ -46,9 +46,9 @@
 - [ ] 3.9 `INV-USER-001` role، capability، تعداد کاربران و مسیرهای registration/login/reset/profile را ثبت کن
 - [ ] 3.10 `INV-WC-001` تنظیمات WooCommerce، currency، tax، shipping، coupon، email و order statusها را ثبت کن
 - [ ] 3.11 `INV-WC-002` نوع محصولات، variation، downloadable file، stock و attributeها را ثبت کن
-- [ ] 3.12 `INV-PAY-001` gatewayها، callback/webhookها، secretها، idempotency و reconciliation را بدون افشای secret ثبت کن
+- [x] 3.12 `INV-PAY-001` gatewayها، callback/webhookها، secretها، idempotency و reconciliation را بدون افشای secret ثبت کن — Evidence: `docs/architecture/payment-entitlement-contract.md`، 2026-08-22
 - [ ] 3.13 `INV-LMS-001` دوره، درس، مدرس، enrollment، progress، certificate و prerequisiteها را ثبت کن
-- [ ] 3.14 `INV-SPOT-001` قرارداد SpotPlayer، license/entitlement و failure modeها را ثبت کن
+- [x] 3.14 `INV-SPOT-001` قرارداد SpotPlayer، license/entitlement و failure modeها را ثبت کن — Evidence: `docs/architecture/payment-entitlement-contract.md`، 2026-08-22
 - [ ] 3.15 `INV-SEO-001` title/meta، schema، canonical، sitemap، robots و redirectها را ثبت کن
 - [ ] 3.16 `INV-EXT-001` cron، API، webhook، SMTP، analytics و سرویس‌های بیرونی را ثبت کن
 - [ ] 3.17 `INV-MEDIA-001` مسیرها، حجم، mime type، private media و broken attachmentها را ثبت کن
@@ -63,7 +63,7 @@
 - [ ] 4.2 `ARC-MAP-001` برای هر قابلیت Legacy مقصد Rebuild و روش rebuild/replace/migrate را ثبت کن
 - [ ] 4.3 `ARC-DATA-001` قرارداد ID، slug، status، taxonomy، meta و serialization مقصد را تعریف کن
 - [ ] 4.4 `ARC-AUTH-001` قرارداد role/capability و اصل least privilege را تعریف کن
-- [ ] 4.5 `ARC-WC-001` source of truth سفارش، پرداخت، refund و entitlement را تعریف کن
+- [x] 4.5 `ARC-WC-001` source of truth سفارش، پرداخت، refund و entitlement را تعریف کن — refund revocation تا تصمیم تجاری غیرفعال است، Evidence: `docs/architecture/payment-entitlement-contract.md`، 2026-08-22
 - [ ] 4.6 `ARC-URL-001` قرارداد URL، redirect، canonical و سیاست حفظ backlink را تعریف کن
 - [ ] 4.7 `ARC-ERR-001` قرارداد logging، correlation ID، alert و نمایش خطا به کاربر را تعریف کن
 - [ ] 4.8 `ARC-PII-001` داده شخصی، retention، export/erase و redaction را تعریف کن
